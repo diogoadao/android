@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <string name="Email_Input">Email</string>
+    <string name="Pass_Input">Paswword</string>
+    <string name="Btn_login">Login</string>
+    <string name="Logo">Findelta logo</string>
+
+</resources>
