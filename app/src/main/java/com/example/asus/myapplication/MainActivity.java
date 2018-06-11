@@ -1,6 +1,7 @@
 package com.example.asus.myapplication;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.StrictMode;
@@ -36,8 +37,6 @@ public class MainActivity extends Activity {
     @ViewById(R.id.myemail)
     EditText myInput;
 
-    @ViewById(R.id.textView)
-    TextView textView;
 
     @Click
     void btn_login() {
@@ -70,15 +69,10 @@ public class MainActivity extends Activity {
 
         doSimpleGet(name);
     }
-
-    @UiThread
-    void updateUi(String message) {
-        textView.setText(message);
-    }
     @Background
     public void doSimpleGet(String Input) {
         Request request = new Request.Builder()
-                .url("http://192.168.2.252/android/api/api.php?action=login&user=dev@mc.com&pass=12345")
+                .url("http://thmc.ddns.net/android/api/api.php?action=login&user=dev@mc.com&pass=12345")
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {
@@ -92,14 +86,19 @@ public class MainActivity extends Activity {
             public void onResponse(Call call, final Response response) throws IOException {
                 final String myResponse = response.body().string();
                 try {
-                    //JSONArray arr = new JSONArray(myResponse);
+                    Login_Controller login = new Login_Controller();
                     JSONObject jObj = new JSONObject(myResponse);
-                    //JSONObject jObj = arr.getJSONObject(0);
-                    //data = jObj.getString().toString();
                     data = jObj.toString();
+                    boolean login_bool = login.LoginCheck(jObj);
+                    if(login_bool == true){
+                        Intent intent = new Intent(MainActivity.this, Main_Menu_.class);
+                        MainActivity.this.startActivity(intent);
+                    }else{
+                        Log.d("Info", "Login Denied v2");
+                    }
 
-                    Log.d("Error", "onResponse() returned: " + data);
-                    updateUi(data.toString());
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
