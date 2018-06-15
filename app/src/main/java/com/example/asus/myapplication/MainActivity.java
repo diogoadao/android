@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -32,16 +33,19 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @EActivity(R.layout.login_activity)
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     @ViewById(R.id.myemail)
-    EditText myInput;
+    EditText _myEmail;
 
+    @ViewById(R.id.mypass)
+    EditText _myPass;
 
     @Click
     void btn_login() {
-        String name = myInput.getText().toString();
-        someBackgroundWork(name);
+        String email = _myEmail.getText().toString();
+        String pass = _myPass.getText().toString();
+        doSimpleGet(email,pass);
     }
     public static String data;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -63,16 +67,10 @@ public class MainActivity extends Activity {
                 .build());
     }
 
-
     @Background
-    void someBackgroundWork(String name) {
-
-        doSimpleGet(name);
-    }
-    @Background
-    public void doSimpleGet(String Input) {
+    public void doSimpleGet(String Email , String Pass) {
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net/android/api/api.php?action=login&user=dev@mc.com&pass=12345")
+                .url("http://192.168.2.252:81/android/api/api.php?action=login&user="+Email+"&pass="+Pass)
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {
@@ -91,7 +89,7 @@ public class MainActivity extends Activity {
                     data = jObj.toString();
                     boolean login_bool = login.LoginCheck(jObj);
                     if(login_bool == true){
-                        Intent intent = new Intent(MainActivity.this, Main_Menu_.class);
+                        Intent intent = new Intent(MainActivity.this, Main_Menu.class);
                         MainActivity.this.startActivity(intent);
                     }else{
                         Log.d("Info", "Login Denied v2");
