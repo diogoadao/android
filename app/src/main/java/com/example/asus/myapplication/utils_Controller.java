@@ -13,7 +13,7 @@ public class utils_Controller {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput("config.txt", Context.MODE_PRIVATE));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
-            String teste="gitteste";
+
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
