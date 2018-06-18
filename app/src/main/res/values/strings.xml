@@ -5,5 +5,9 @@
     <string name="Pass_Input">Paswword</string>
     <string name="Btn_login">Login</string>
     <string name="Logo">Findelta logo</string>
+    <string name="menu_delete">delete_menu</string>
+    <string name="menu_archive">menu_archive</string>
+    <string name="menu_save">menu_save</string>
+    <string name="userlist">Lista De Utilizadores</string>
 
 </resources>

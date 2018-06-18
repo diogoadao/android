@@ -1,21 +1,21 @@
 package com.example.asus.myapplication;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import org.json.JSONException;
@@ -37,10 +37,13 @@ public class Main_Menu  extends AppCompatActivity {
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
+    private ImageButton mbutton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+        mbutton = findViewById(R.id.imageButton3);
         pieChart = findViewById(R.id.chart);
         pieChart.setUsePercentValues(false);
         DoChart();
@@ -54,7 +57,30 @@ public class Main_Menu  extends AppCompatActivity {
 
 
         pieChart.animateXY(1400, 1400);
+        mbutton = findViewById(R.id.imageButton3);
+        mbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(Main_Menu.this, mbutton);
+                popup.getMenuInflater().inflate(R.menu.actions, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch ("" + item.getTitle()) {
+                            case "Lista De Utilizadores":
+                                Intent intent = new Intent(Main_Menu.this, User_List.class);
+                                Main_Menu.this.startActivity(intent);
+                                break;
+
+                        }
+
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });
     }
+
     public void DoChart(){
         Request request = new Request.Builder()
                 .url("http://192.168.2.252:81/android/api/api.php?action=PieChart")
@@ -101,11 +127,10 @@ public class Main_Menu  extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-
-
             }
         });
 
     }
+
 
 }
