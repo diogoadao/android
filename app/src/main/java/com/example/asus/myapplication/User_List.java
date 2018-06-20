@@ -23,7 +23,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class User_List extends AppCompatActivity {
-
     RecyclerView rv;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
@@ -43,8 +42,6 @@ public class User_List extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist_recycler);
         context = this;
-
-
         Request request = new Request.Builder()
                 .url("http://192.168.2.252:81/android/api/api.php?action=teste")
                 .build();
@@ -59,14 +56,10 @@ public class User_List extends AppCompatActivity {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 final String myResponse = response.body().string();
-
                 try {
-
                     JSONArray jObj = new JSONArray(myResponse);
-
                     for (int i = 0; i < jObj.length(); i++) {
                         JSONObject obj = jObj.getJSONObject(i);
-
                         String id = obj.getString("id");
                         String fname = obj.getString("fname");
                         String lname = obj.getString("lname");
@@ -77,20 +70,12 @@ public class User_List extends AppCompatActivity {
                         // Email.add(email);
                         State.add(state);
                         //Log.d("info", "onResponse:"+state);
-
-
                     }
-
-
                     boolres = true;
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
-
             }
-
         });
 
         rv = findViewById(R.id.rv);
@@ -99,17 +84,13 @@ public class User_List extends AppCompatActivity {
 
         User_List_Adapter adapter = new User_List_Adapter(context, UserID, username, username, username, username, username, State);
         try {
+
             TimeUnit.MILLISECONDS.sleep(80);
             rv.setAdapter(adapter);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
         //request end
-
     }
-
-
-
 }
