@@ -56,7 +56,7 @@ public class Main_Menu extends AppCompatActivity {
 
 
         pieChart.animateXY(1400, 1400);
-        mbutton = findViewById(R.id.imageButton3);
+        mbutton = findViewById(R.id.menubtn);
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +83,7 @@ public class Main_Menu extends AppCompatActivity {
 
     public void DoChart() {
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=PieChart")
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=PieChart")
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {

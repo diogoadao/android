@@ -15,5 +15,8 @@
     <string name="Done">Work Done</string>
     <string name="completed">work complete</string>
     <string name="work">Work in progress</string>
+    <string name="createuser">Criar Utilizador</string>
+    <string name="backbutton">Back to menu</string>
+    <string name="Loginin">A conectar</string>
 
 </resources>
