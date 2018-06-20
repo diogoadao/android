@@ -9,5 +9,11 @@
     <string name="menu_archive">menu_archive</string>
     <string name="menu_save">menu_save</string>
     <string name="userlist">Lista De Utilizadores</string>
+    <string name="isuserplaceholder">ID User</string>
+    <string name="username">User Name</string>
+    <string name="UserEmail">Email User</string>
+    <string name="Done">Work Done</string>
+    <string name="completed">work complete</string>
+    <string name="work">Work in progress</string>
 
 </resources>

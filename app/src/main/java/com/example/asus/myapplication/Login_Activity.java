@@ -25,7 +25,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @EActivity(R.layout.login_activity)
-public class MainActivity extends AppCompatActivity {
+public class Login_Activity extends AppCompatActivity {
 
     @ViewById(R.id.myemail)
     EditText _myEmail;
@@ -37,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
     void btn_login() {
         String email = _myEmail.getText().toString();
         String pass = _myPass.getText().toString();
-        doSimpleGet(email,pass);
+        doSimpleGet(email, pass);
     }
+
     public static String data;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
@@ -60,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Background
-    public void doSimpleGet(String Email , String Pass) {
+    public void doSimpleGet(String Email, String Pass) {
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=login&user="+Email+"&pass="+Pass)
+                .url("http://192.168.2.252:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {
@@ -80,17 +81,16 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
                     boolean login_bool = login.LoginCheck(jObj);
-                    if(login_bool == true){
-                        Intent intent = new Intent(MainActivity.this, Main_Menu.class);
-                        MainActivity.this.startActivity(intent);
-                    }else{
+                    if (login_bool == true) {
+                        Intent intent = new Intent(Login_Activity.this, Main_Menu.class);
+                        Login_Activity.this.startActivity(intent);
+                    } else {
                         Log.d("Info", "Login Denied v2");
                     }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
 
 
             }

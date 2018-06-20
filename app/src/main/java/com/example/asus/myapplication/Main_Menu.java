@@ -31,9 +31,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class Main_Menu  extends AppCompatActivity {
+public class Main_Menu extends AppCompatActivity {
     public final ArrayList<Entry> yvalues = new ArrayList<Entry>();
-    public  PieChart pieChart;
+    public PieChart pieChart;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
@@ -50,10 +50,9 @@ public class Main_Menu  extends AppCompatActivity {
 
 
         pieChart.setDrawHoleEnabled(true);
-        pieChart.setDescriptionColor(Color.rgb(255,255,255));
+        pieChart.setDescriptionColor(Color.rgb(255, 255, 255));
         pieChart.setDescription("Numero De Tarefas Por estado");
         pieChart.getLegend().setEnabled(false);
-
 
 
         pieChart.animateXY(1400, 1400);
@@ -67,6 +66,7 @@ public class Main_Menu  extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch ("" + item.getTitle()) {
                             case "Lista De Utilizadores":
+
                                 Intent intent = new Intent(Main_Menu.this, User_List.class);
                                 Main_Menu.this.startActivity(intent);
                                 break;
@@ -81,7 +81,7 @@ public class Main_Menu  extends AppCompatActivity {
         });
     }
 
-    public void DoChart(){
+    public void DoChart() {
         Request request = new Request.Builder()
                 .url("http://192.168.2.252:81/android/api/api.php?action=PieChart")
                 .build();
@@ -99,9 +99,9 @@ public class Main_Menu  extends AppCompatActivity {
                 try {
 
                     JSONObject jObj = new JSONObject(myResponse);
-                    Log.d("Info", ""+jObj.getString("open"));
-                    Log.d("Info", ""+jObj.getString("executed"));
-                    Log.d("Info", ""+jObj.getString("done"));
+                    Log.d("Info", "" + jObj.getString("open"));
+                    Log.d("Info", "" + jObj.getString("executed"));
+                    Log.d("Info", "" + jObj.getString("done"));
                     yvalues.add(new Entry(Integer.parseInt(jObj.getString("open")), 1));
                     yvalues.add(new Entry(Integer.parseInt(jObj.getString("executed")), 2));
                     yvalues.add(new Entry(Integer.parseInt(jObj.getString("done")), 3));

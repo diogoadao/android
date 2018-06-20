@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity_"
+            android:name=".Login_Activity_"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main_Menu" />
-        <activity android:name=".User_List" />
+        <activity
+            android:name=".User_List"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
