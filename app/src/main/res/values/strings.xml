@@ -18,5 +18,13 @@
     <string name="createuser">Criar Utilizador</string>
     <string name="backbutton">Back to menu</string>
     <string name="Loginin">A conectar</string>
+    <string name="data">Data</string>
+    <string name="id">ID</string>
+    <string name="nome">Nome</string>
+    <string name="id_crm">ID CRM</string>
+    <string name="data_de_fim">Data de Fim</string>
+    <string name="empresa">Empresa</string>
+    <string name="data_de_inicio">Data de Inicio</string>
+    <string name="respons_vel">Responsável</string>
 
 </resources>
