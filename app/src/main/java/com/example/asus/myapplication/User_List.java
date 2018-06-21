@@ -7,10 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.PopupMenu;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
@@ -43,6 +41,7 @@ public class User_List extends AppCompatActivity {
     private ArrayList<String> Done = new ArrayList<String>();
     private ArrayList<String> State = new ArrayList<String>();
     private ImageButton mbutton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,7 @@ public class User_List extends AppCompatActivity {
         });
         context = this;
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=teste")
+                .url("http://192.168.2.252:81/android/api/api.php?action=teste")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -82,10 +81,16 @@ public class User_List extends AppCompatActivity {
                         String lname = obj.getString("lname");
                         String email = obj.getString("email");
                         String state = obj.getString("state");
+                        String work = obj.getString("work");
+                        String done = obj.getString("done");
+                        String completed = obj.getString("completed");
                         UserID.add(id);
                         username.add(fname + " " + lname);
-                        // Email.add(email);
+                        Email.add(email);
                         State.add(state);
+                        Work.add(work);
+                        Done.add(done);
+                        Completed.add(completed);
                         //Log.d("info", "onResponse:"+state);
                     }
                     boolres = true;
@@ -99,7 +104,7 @@ public class User_List extends AppCompatActivity {
         rv.setLayoutManager(new GridLayoutManager(context, 1));
         rv.setHasFixedSize(true);
 
-        User_List_Adapter adapter = new User_List_Adapter(context, UserID, username, username, username, username, username, State);
+        User_List_Adapter adapter = new User_List_Adapter(context, UserID, Email, Completed, Done, Work, username, State);
         try {
 
             TimeUnit.MILLISECONDS.sleep(80);

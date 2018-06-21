@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class User_List_ViewHolder extends RecyclerView.ViewHolder {
-    TextView userid, email, completed, done, inprogress, username;
+    TextView userid, email, completed, done, work, username;
     CardView card_view;
 
     public User_List_ViewHolder(View itemView) {
@@ -15,7 +15,7 @@ public class User_List_ViewHolder extends RecyclerView.ViewHolder {
         email = itemView.findViewById(R.id.useremail);
         completed = itemView.findViewById(R.id.completed);
         done = itemView.findViewById(R.id.done);
-        inprogress = itemView.findViewById(R.id.work);
+        work = itemView.findViewById(R.id.work);
         username = itemView.findViewById(R.id.username);
         card_view = itemView.findViewById(R.id.card_view);
     }

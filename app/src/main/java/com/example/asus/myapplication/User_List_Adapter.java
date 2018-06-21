@@ -12,16 +12,16 @@ import java.util.ArrayList;
 
 public class User_List_Adapter extends RecyclerView.Adapter<User_List_ViewHolder> {
     Context _context;
-    ArrayList<String> userid, email, completed, done, inprogress, username, state;
+    ArrayList<String> userid, email, completed, done, work, username, state;
     CardView card_view;
 
-    public User_List_Adapter(Context _context, ArrayList<String> userid, ArrayList<String> email, ArrayList<String> completed, ArrayList<String> done, ArrayList<String> inprogress, ArrayList<String> username, ArrayList<String> state) {
+    public User_List_Adapter(Context _context, ArrayList<String> userid, ArrayList<String> email, ArrayList<String> completed, ArrayList<String> done, ArrayList<String> work, ArrayList<String> username, ArrayList<String> state) {
         this._context = _context;
         this.userid = userid;
         this.email = email;
         this.completed = completed;
         this.done = done;
-        this.inprogress = inprogress;
+        this.work = work;
         this.username = username;
         this.state = state;
 
@@ -44,11 +44,14 @@ public class User_List_Adapter extends RecyclerView.Adapter<User_List_ViewHolder
         if (state.get(position).contains("Inativo")) {
             holder.card_view.setCardBackgroundColor(Color.rgb(255, 153, 0));
         } else {
-            holder.card_view.setCardBackgroundColor(Color.rgb(0, 255, 0));
+            holder.card_view.setCardBackgroundColor(Color.rgb(0, 153, 51));
         }
         holder.username.setText(username.get(position));
-        holder.userid.setText(userid.get(position));
-        holder.email.setText("teste");
+        holder.userid.setText("ID : " + userid.get(position));
+        holder.email.setText(email.get(position));
+        holder.done.setText("Concluído : " + done.get(position));
+        holder.completed.setText("Fechado : " + completed.get(position));
+        holder.work.setText("Em Curso : " + work.get(position));
 
 
     }
