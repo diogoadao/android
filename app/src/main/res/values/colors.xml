@@ -20,5 +20,8 @@
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
     <color name="reddarker">#800000</color>
+    <color name="gradStart">#3e0000</color>
+    <color name="gradStop">#8e0000</color>
+    <color name="graydark">#8c7373</color>
 
 </resources>

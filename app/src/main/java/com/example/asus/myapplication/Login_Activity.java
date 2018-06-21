@@ -2,17 +2,17 @@ package com.example.asus.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-
-import org.androidannotations.annotations.Background;
-import org.androidannotations.annotations.Click;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.ViewById;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,21 +24,19 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-@EActivity(R.layout.login_activity)
 public class Login_Activity extends AppCompatActivity {
 
-    @ViewById(R.id.myemail)
-    EditText _myEmail;
-
-    @ViewById(R.id.mypass)
-    EditText _myPass;
-
-    @Click
-    void btn_login() {
-        String email = _myEmail.getText().toString();
-        String pass = _myPass.getText().toString();
-        doSimpleGet(email, pass);
-    }
+    private Button loginbtn;
+    private EditText mypass , myemail;
+    ConstraintLayout rellay1;
+    ImageView logo;
+    Handler handler = new Handler();
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            rellay1.setVisibility(View.VISIBLE);
+        }
+    };
 
     public static String data;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -48,6 +46,7 @@ public class Login_Activity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.login_activity);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()
@@ -58,9 +57,20 @@ public class Login_Activity extends AppCompatActivity {
                 .detectAll()
                 .penaltyDeath()
                 .build());
+        loginbtn = (Button) findViewById(R.id.btn_login);
+        myemail = findViewById(R.id.myemail);
+        mypass = findViewById(R.id.mypass);
+        loginbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {doSimpleGet(myemail.getText().toString(),mypass.getText().toString());
+            }
+        });
+        rellay1 = (ConstraintLayout) findViewById(R.id.rellay1);
+        handler.postDelayed(runnable, 2000);
+
+
     }
 
-    @Background
     public void doSimpleGet(String Email, String Pass) {
         Request request = new Request.Builder()
                 .url("http://192.168.2.252:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
