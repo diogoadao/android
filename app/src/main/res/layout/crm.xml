@@ -2,21 +2,21 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/userlistlay"
+    android:layout_width="match_parent"
     android:layout_height="120dp"
     android:background="@drawable/grad_bg"
-    tools:context=".User_List">
+    tools:context=".crm">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="358dp"
-        android:layout_height="102dp"
+        android:layout_height="115dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="17dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,83 +28,75 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/username"
+                android:id="@+id/IDCRM"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/username"
-                android:textColor="@color/white"
+                android:text="@string/id_crm"
+                android:textColor="@color/black"
                 android:textSize="14dp"
                 android:fontFamily="serif"
+                app:layout_constraintBottom_toTopOf="@+id/responsável"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iduser" />
+                app:layout_constraintTop_toBottomOf="@+id/IDCRM" />
 
             <TextView
-                android:id="@+id/useremail"
+                android:id="@+id/empresa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginEnd="116dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/UserEmail"
-                android:textColor="@color/white"
+                android:text="@string/empresa"
+                android:textColor="@color/black"
                 android:textSize="14dp"
                 android:fontFamily="serif"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username" />
-
-            <TextView
-                android:id="@+id/work"
-                android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_marginStart="235dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/work"
-                android:textColor="@color/white"
-                android:textSize="14dp"
-                android:fontFamily="serif"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/done" />
-
-            <TextView
-                android:id="@+id/completed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="235dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/completed"
-                android:textColor="@color/white"
-                android:textSize="14dp"
-                android:fontFamily="serif"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/done"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="235dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/Done"
-                android:textColor="@color/white"
-                android:textSize="14dp"
-                android:fontFamily="serif"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/completed" />
 
             <TextView
-                android:id="@+id/iduser"
+                android:id="@+id/responsável"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/isuserplaceholder"
-                android:textColor="@color/white"
+                android:layout_marginTop="28dp"
+                android:text="@string/respons_vel"
+                android:textColor="@color/black"
                 android:textSize="14dp"
-                android:fontFamily="serif"                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/IDCRM" />
+
+            <TextView
+                android:id="@+id/Datadeinicio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/data_de_inicio"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:fontFamily="serif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/responsável"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/Datadefim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="101dp"
+                android:text="@string/data_de_fim"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:fontFamily="serif"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
