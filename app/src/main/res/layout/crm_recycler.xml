@@ -19,6 +19,20 @@
         app:srcCompat="@drawable/back"
         android:contentDescription="@string/backbutton" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Limitado aos últimos 50 Eventos"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:fontFamily="sans-serif"
+        android:shadowColor="@color/gray"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:layout_marginLeft="210dp"/>
+
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_width="0dp"

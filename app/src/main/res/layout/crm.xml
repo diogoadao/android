@@ -27,6 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/IDCRM"
                 android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
                 android:shadowDy="2"
                 android:shadowRadius="1"
                 android:text="@string/id_crm"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/exec"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +60,7 @@
                 android:shadowDy="2"
                 android:shadowRadius="1"
                 android:text="@string/empresa"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/startdate"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +80,7 @@
                 android:shadowRadius="1"
                 android:fontFamily="sans-serif"
                 android:text="@string/exec"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/Company"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +99,7 @@
                 android:shadowDy="2"
                 android:shadowRadius="1"
                 android:text="@string/startdate"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toTopOf="@+id/enddate"
                 app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +118,7 @@
                 android:shadowDy="2"
                 android:shadowRadius="1"
                 android:text="@string/enddate"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
