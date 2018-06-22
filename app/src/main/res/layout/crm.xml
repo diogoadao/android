@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/userlistlay"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/grad_bg"
-    tools:context=".crm">
+    tools:context=".Crm_List">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="358dp"
-        android:layout_height="115dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -33,70 +33,77 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="serif"
                 android:text="@string/id_crm"
                 android:textColor="@color/black"
-                android:textSize="14dp"
-                android:fontFamily="serif"
-                app:layout_constraintBottom_toTopOf="@+id/responsável"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/exec"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/IDCRM" />
-
-            <TextView
-                android:id="@+id/empresa"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="116dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/empresa"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                android:fontFamily="serif"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
             <TextView
-                android:id="@+id/responsável"
+                android:id="@+id/Company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="28dp"
-                android:text="@string/respons_vel"
+                android:layout_marginTop="8dp"
+
+                android:fontFamily="serif"
+                android:text="@string/empresa"
                 android:textColor="@color/black"
-                android:textSize="14dp"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/startdate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exec" />
+
+
+            <TextView
+                android:id="@+id/exec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/exec"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/Company"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/IDCRM" />
 
             <TextView
-                android:id="@+id/Datadeinicio"
+                android:id="@+id/startdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/data_de_inicio"
-                android:textColor="@color/black"
-                android:textSize="14dp"
                 android:fontFamily="serif"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/startdate"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/enddate"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/responsável"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/Company" />
 
             <TextView
-                android:id="@+id/Datadefim"
+                android:id="@+id/enddate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:layout_marginEnd="101dp"
-                android:text="@string/data_de_fim"
-                android:textColor="@color/black"
-                android:textSize="14dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="serif"
+                android:text="@string/enddate"
+                android:textColor="@color/black"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/startdate" />
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
 
+</android.support.constraint.ConstraintLayout>

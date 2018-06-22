@@ -68,8 +68,30 @@ public class Main_Menu extends AppCompatActivity {
                             case "Lista De Utilizadores":
 
                                 Intent intent = new Intent(Main_Menu.this, User_List.class);
-                                Main_Menu.this.startActivity(intent);
+                                startActivity(intent);
                                 break;
+                            case "Lista de Logins":
+
+                                Intent intent2 = new Intent(Main_Menu.this, Logs_List.class);
+                                startActivity(intent2);
+                                break;
+                            case "Lista de Clientes":
+
+                                Intent intent3 = new Intent(Main_Menu.this, Client_List.class);
+                                startActivity(intent3);
+                                break;
+                            case "LogOut":
+
+                                Intent intent4 = new Intent(Main_Menu.this, Login_Activity.class);
+                                startActivity(intent4);
+                                break;
+                            case "Lista De Eventos":
+
+                                Intent intent5 = new Intent(Main_Menu.this, Crm_List.class);
+                                startActivity(intent5);
+                                break;
+
+
 
                         }
 

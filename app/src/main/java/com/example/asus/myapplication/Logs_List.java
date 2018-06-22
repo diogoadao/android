@@ -26,38 +26,32 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class User_List extends AppCompatActivity {
-    RecyclerView rv;
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+public class Logs_List extends AppCompatActivity {
+    private ImageButton mbutton;
+    private Context _context;
+    private ArrayList<String> Username = new ArrayList<String>();
+    private ArrayList<String> LogID = new ArrayList<String>();
+    private ArrayList<String> Date = new ArrayList<String>();
+    private RecyclerView rv;
+    private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
-    private Context context;
-    private boolean boolres = false;
-    private ArrayList<String> username = new ArrayList<String>();
-    private ArrayList<String> UserID = new ArrayList<String>();
-    private ArrayList<String> Email = new ArrayList<String>();
-    private ArrayList<String> Work = new ArrayList<String>();
-    private ArrayList<String> Completed = new ArrayList<String>();
-    private ArrayList<String> Done = new ArrayList<String>();
-    private ArrayList<String> State = new ArrayList<String>();
-    private ImageButton mbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.userlist_recycler);
+        setContentView(R.layout.logs_recycler);
+        _context = this;
         mbutton = findViewById(R.id.imageButton3);
-        Log.i("info", "onCreate: imagebutton");
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(User_List.this, Main_Menu.class);
-                User_List.this.startActivity(intent);
+                Intent intent = new Intent(Logs_List.this, Main_Menu.class);
+                Logs_List.this.startActivity(intent);
             }
         });
-        context = this;
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=Users")
+                .url("http://192.168.2.252:81/android/api/api.php?action=Logs")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -76,37 +70,25 @@ public class User_List extends AppCompatActivity {
                     JSONArray jObj = new JSONArray(myResponse);
                     for (int i = 0; i < jObj.length(); i++) {
                         JSONObject obj = jObj.getJSONObject(i);
-                        String id = obj.getString("id");
+                        String id_log = obj.getString("id_log");
                         String fname = obj.getString("fname");
                         String lname = obj.getString("lname");
-                        String email = obj.getString("email");
-                        String state = obj.getString("state");
-                        String work = obj.getString("work");
-                        String done = obj.getString("done");
-                        String completed = obj.getString("completed");
-                        UserID.add(id);
-                        username.add(fname + " " + lname);
-                        Email.add(email);
-                        State.add(state);
-                        Work.add(work);
-                        Done.add(done);
-                        Completed.add(completed);
-                        //Log.d("info", "onResponse:"+state);
+                        String date = obj.getString("date");
+                        Date.add(date);
+                        Username.add(fname+" "+lname);
+                        LogID.add(id_log);
                     }
-                    boolres = true;
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
-
         rv = findViewById(R.id.rv);
-        rv.setLayoutManager(new GridLayoutManager(context, 1));
+        rv.setLayoutManager(new GridLayoutManager(_context, 1));
         rv.setHasFixedSize(true);
-
-        User_List_Adapter adapter = new User_List_Adapter(context, UserID, Email, Completed, Done, Work, username, State);
+        Logs_List_Adapter adapter = new Logs_List_Adapter(_context,LogID,Username,Date);
         try {
-
             TimeUnit.MILLISECONDS.sleep(80);
             Log.i("info", "adapter created: Confirmed");
             rv.setAdapter(adapter);
@@ -114,6 +96,5 @@ public class User_List extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //request end
     }
 }

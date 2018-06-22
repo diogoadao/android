@@ -1,5 +1,6 @@
 package com.example.asus.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,6 +30,8 @@ public class Login_Activity extends AppCompatActivity {
 
     private Button loginbtn;
     private EditText mypass , myemail;
+    private boolean login_bool;
+    private ProgressDialog prog;
     ConstraintLayout rellay1;
     ImageView logo;
     Handler handler = new Handler();
@@ -62,7 +66,16 @@ public class Login_Activity extends AppCompatActivity {
         mypass = findViewById(R.id.mypass);
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {doSimpleGet(myemail.getText().toString(),mypass.getText().toString());
+            public void onClick(View v) {
+                prog = new ProgressDialog(Login_Activity.this);
+                prog.setTitle(getString(R.string.pleaseWait));
+                prog.setMessage(getString(R.string.webpage_being_loaded));
+                prog.setCancelable(false);
+                prog.setIndeterminate(true);
+                prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                prog.show();
+                doSimpleGet(myemail.getText().toString(), mypass.getText().toString());
+
             }
         });
         rellay1 = (ConstraintLayout) findViewById(R.id.rellay1);
@@ -72,6 +85,7 @@ public class Login_Activity extends AppCompatActivity {
     }
 
     public void doSimpleGet(String Email, String Pass) {
+
         Request request = new Request.Builder()
                 .url("http://192.168.2.252:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
                 .build();
@@ -81,22 +95,29 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 call.cancel();
+                prog.dismiss();
             }
 
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 final String myResponse = response.body().string();
                 try {
+                    prog.dismiss();
                     Login_Controller login = new Login_Controller();
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
-                    boolean login_bool = login.LoginCheck(jObj);
+                    login_bool = login.LoginCheck(jObj);
+
+                    Log.d("Info", "Boolean state"+login_bool);
                     if (login_bool == true) {
+                        Log.d("Info", "Login approved v2 asdas");
                         Intent intent = new Intent(Login_Activity.this, Main_Menu.class);
                         Login_Activity.this.startActivity(intent);
                     } else {
+
                         Log.d("Info", "Login Denied v2");
                     }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();

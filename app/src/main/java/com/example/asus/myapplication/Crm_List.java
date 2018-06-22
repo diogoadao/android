@@ -26,38 +26,35 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class User_List extends AppCompatActivity {
-    RecyclerView rv;
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+public class Crm_List extends AppCompatActivity {
+    private ImageButton mbutton;
+    private Context _context;
+    private ArrayList<String> IDCRM = new ArrayList<String>();
+    private ArrayList<String> exec = new ArrayList<String>();
+    private ArrayList<String> Startdate = new ArrayList<String>();
+    private ArrayList<String> Enddate = new ArrayList<String>();
+    private ArrayList<String> Company = new ArrayList<String>();
+    private ArrayList<String> State = new ArrayList<String>();
+    private RecyclerView rv;
+    private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
-    private Context context;
-    private boolean boolres = false;
-    private ArrayList<String> username = new ArrayList<String>();
-    private ArrayList<String> UserID = new ArrayList<String>();
-    private ArrayList<String> Email = new ArrayList<String>();
-    private ArrayList<String> Work = new ArrayList<String>();
-    private ArrayList<String> Completed = new ArrayList<String>();
-    private ArrayList<String> Done = new ArrayList<String>();
-    private ArrayList<String> State = new ArrayList<String>();
-    private ImageButton mbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.userlist_recycler);
+        setContentView(R.layout.logs_recycler);
+        _context = this;
         mbutton = findViewById(R.id.imageButton3);
-        Log.i("info", "onCreate: imagebutton");
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(User_List.this, Main_Menu.class);
-                User_List.this.startActivity(intent);
+                Intent intent = new Intent(Crm_List.this, Main_Menu.class);
+                startActivity(intent);
             }
         });
-        context = this;
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=Users")
+                .url("http://192.168.2.252:81/android/api/api.php?action=crm")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -71,49 +68,43 @@ public class User_List extends AppCompatActivity {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 Log.i("info", "request got response: response");
+
                 final String myResponse = response.body().string();
+                Log.i("info", "request got response: response"+myResponse);
                 try {
                     JSONArray jObj = new JSONArray(myResponse);
                     for (int i = 0; i < jObj.length(); i++) {
                         JSONObject obj = jObj.getJSONObject(i);
-                        String id = obj.getString("id");
-                        String fname = obj.getString("fname");
-                        String lname = obj.getString("lname");
-                        String email = obj.getString("email");
+                        String id_crm = obj.getString("idcrm");
+                        String fullname = obj.getString("fullname");
+                        String name = obj.getString("name");
+                        String startdate = obj.getString("startline");
+                        String enddate = obj.getString("deadline");
                         String state = obj.getString("state");
-                        String work = obj.getString("work");
-                        String done = obj.getString("done");
-                        String completed = obj.getString("completed");
-                        UserID.add(id);
-                        username.add(fname + " " + lname);
-                        Email.add(email);
+                        IDCRM.add(id_crm);
+                        exec.add(fullname);
+                        Startdate.add(startdate);
+                        Enddate.add(enddate);
+                        Company.add(name);
                         State.add(state);
-                        Work.add(work);
-                        Done.add(done);
-                        Completed.add(completed);
-                        //Log.d("info", "onResponse:"+state);
                     }
-                    boolres = true;
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
-
         rv = findViewById(R.id.rv);
-        rv.setLayoutManager(new GridLayoutManager(context, 1));
+        rv.setLayoutManager(new GridLayoutManager(_context, 1));
         rv.setHasFixedSize(true);
-
-        User_List_Adapter adapter = new User_List_Adapter(context, UserID, Email, Completed, Done, Work, username, State);
+        Crm_List_Adapter adapter = new Crm_List_Adapter(_context, IDCRM, exec, Startdate , Enddate, Company, State);
         try {
-
-            TimeUnit.MILLISECONDS.sleep(80);
+            TimeUnit.MILLISECONDS.sleep(400);
             Log.i("info", "adapter created: Confirmed");
             rv.setAdapter(adapter);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //request end
     }
 }

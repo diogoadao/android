@@ -23,8 +23,20 @@
     <string name="nome">Nome</string>
     <string name="id_crm">ID CRM</string>
     <string name="data_de_fim">Data de Fim</string>
-    <string name="empresa">Empresa</string>
+    <string name="empresa">company</string>
     <string name="data_de_inicio">Data de Inicio</string>
     <string name="respons_vel">Responsável</string>
+    <string name="loglist">Lista de Logins</string>
+    <string name="Company">Company Name</string>
+    <string name="CpmapnyAddress">Address</string>
+    <string name="CompanyID">ID Company</string>
+    <string name="Client">Lista de Clientes</string>
+    <string name="pleaseWait">Por Favor Espere</string>
+    <string name="webpage_being_loaded">Login In</string>
+    <string name="logout">LogOut</string>
+    <string name="exec">user</string>
+    <string name="startdate">Start Date</string>
+    <string name="enddate">End Date</string>
+    <string name="crm_list">Lista De Eventos</string>
 
 </resources>

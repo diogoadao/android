@@ -3,13 +3,17 @@
         android:id="@+id/userlist"
         android:icon="@drawable/userlist"
         android:title="@string/userlist" />
-    <!-- menu group -->
-    <group android:id="@+id/group_delete">
-        <item
-            android:id="@+id/menu_archive"
-            android:title="@string/menu_archive" />
-        <item
-            android:id="@+id/menu_delete"
-            android:title="@string/menu_delete" />
-    </group>
+    <item
+        android:id="@+id/loglist"
+        android:title="@string/loglist" />
+    <item
+        android:id="@+id/menu_delete"
+        android:title="@string/Client" />
+    <item
+        android:id="@+id/CRM"
+        android:title="@string/crm_list" />
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout" />
+
 </menu>
