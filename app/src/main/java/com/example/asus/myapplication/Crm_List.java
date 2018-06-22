@@ -54,7 +54,7 @@ public class Crm_List extends AppCompatActivity {
             }
         });
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=crm")
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=crm")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -99,7 +99,7 @@ public class Crm_List extends AppCompatActivity {
         rv.setHasFixedSize(true);
         Crm_List_Adapter adapter = new Crm_List_Adapter(_context, IDCRM, exec, Startdate , Enddate, Company, State);
         try {
-            TimeUnit.MILLISECONDS.sleep(400);
+            TimeUnit.MILLISECONDS.sleep(500);
             Log.i("info", "adapter created: Confirmed");
             rv.setAdapter(adapter);
 

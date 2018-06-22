@@ -51,7 +51,7 @@ public class Client_List extends AppCompatActivity {
             }
         });
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=Clients")
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=Clients")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -88,7 +88,7 @@ public class Client_List extends AppCompatActivity {
         rv.setHasFixedSize(true);
         Client_List_Adapter adapter = new Client_List_Adapter(_context,IdClient,ClientName,Address);
         try {
-            TimeUnit.MILLISECONDS.sleep(80);
+            TimeUnit.MILLISECONDS.sleep(500);
             Log.i("info", "adapter created: Confirmed");
             rv.setAdapter(adapter);
 

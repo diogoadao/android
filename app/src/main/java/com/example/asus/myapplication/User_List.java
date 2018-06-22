@@ -57,7 +57,7 @@ public class User_List extends AppCompatActivity {
         });
         context = this;
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=Users")
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=Users")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -107,7 +107,7 @@ public class User_List extends AppCompatActivity {
         User_List_Adapter adapter = new User_List_Adapter(context, UserID, Email, Completed, Done, Work, username, State);
         try {
 
-            TimeUnit.MILLISECONDS.sleep(80);
+            TimeUnit.MILLISECONDS.sleep(500);
             Log.i("info", "adapter created: Confirmed");
             rv.setAdapter(adapter);
 

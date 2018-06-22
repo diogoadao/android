@@ -87,7 +87,7 @@ public class Login_Activity extends AppCompatActivity {
     public void doSimpleGet(String Email, String Pass) {
 
         Request request = new Request.Builder()
-                .url("http://192.168.2.252:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {
