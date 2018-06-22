@@ -37,9 +37,9 @@ public class Logs_List_Adapter extends RecyclerView.Adapter<Logs_List_ViewHolder
     public void onBindViewHolder(Logs_List_ViewHolder holder, int position) {
 
         //BIND DATA
-        holder.card_view.setCardBackgroundColor(Color.rgb(0, 153, 51));
-        holder.Username.setText("Login ID: " + username.get(position));
-        holder.Log_ID.setText("Nome: " + logid.get(position));
+        holder.card_view.setCardBackgroundColor(Color.rgb(255, 255, 255));
+        holder.Username.setText("Nome: " + username.get(position));
+        holder.Log_ID.setText("Login ID: " + logid.get(position));
         holder.Date.setText("Hora de Acesso: " + date.get(position));
 
 

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 public class Crm_List_Adapter extends RecyclerView.Adapter<Crm_List_ViewHolder> {
-
+//CRM'S
     Context _context;
     ArrayList<String> IDCRM, exec, startdate , enddate , company ,State;
     CardView card_view;
@@ -41,13 +41,13 @@ public class Crm_List_Adapter extends RecyclerView.Adapter<Crm_List_ViewHolder> 
 
         //BIND DATA
         if (State.get(position).contains("0")) {
-            holder.card_view.setCardBackgroundColor(Color.rgb(255, 153, 0));
+            holder.card_view.setCardBackgroundColor(Color.rgb(255, 209, 26));//Em Curso
         } else if (State.get(position).contains("1")){
-            holder.card_view.setCardBackgroundColor(Color.rgb(0, 153, 51));
+            holder.card_view.setCardBackgroundColor(Color.rgb(255, 173, 51));//Concluídos mas não fechados
         }else{
-            holder.card_view.setCardBackgroundColor(Color.rgb(51, 153, 255));
+            holder.card_view.setCardBackgroundColor(Color.rgb(0, 179, 60));//Concluídos
         }
-        holder.CRM_ID.setText("Login ID: " + IDCRM.get(position));
+        holder.CRM_ID.setText("ID: " + IDCRM.get(position));
         holder.Exec.setText("Responsavel: " + exec.get(position));
         holder.StartDate.setText("Inicio: " + startdate.get(position));
         holder.EndDate.setText("Limite: " + enddate.get(position));

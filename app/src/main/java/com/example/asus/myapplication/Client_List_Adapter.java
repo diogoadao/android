@@ -37,7 +37,7 @@ public class Client_List_Adapter extends RecyclerView.Adapter<Client_List_ViewHo
     public void onBindViewHolder(Client_List_ViewHolder holder, int position) {
 
         //BIND DATA
-        holder.card_view.setCardBackgroundColor(Color.rgb(0, 153, 51));
+        holder.card_view.setCardBackgroundColor(Color.rgb(255, 255, 255));
         holder.IDComp.setText("ID: " + IDComp.get(position));
         holder.CompName.setText("Nome: " + CompName.get(position));
         holder.Address.setText("Local: " + Address.get(position));
