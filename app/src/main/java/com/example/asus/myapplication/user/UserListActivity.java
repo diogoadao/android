@@ -17,14 +17,13 @@ public class UserListActivity extends AppCompatActivity {
     private final StrictModeController control = new StrictModeController();
     private RecyclerView rv;
 
-    private ImageButton mbutton;
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist_recycler);
-        mbutton = findViewById(R.id.imageButton3);
+        ImageButton mbutton = findViewById(R.id.imageButton3);
         control.turnStrict();
         Log.i("info", "onCreate: imagebutton");
         Handler handler = new Handler();
@@ -39,7 +38,7 @@ public class UserListActivity extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                data.GotoMenu(UserListActivity.this);
+                data.gotoMenu(UserListActivity.this);
             }
         });
         rv = findViewById(R.id.rv);

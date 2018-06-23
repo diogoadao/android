@@ -11,14 +11,12 @@ import android.widget.ImageButton;
 
 import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.utils.StrictModeController;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-
-import okhttp3.OkHttpClient;
 
 public class LogsListActivity extends AppCompatActivity {
     private final LogsListController logs = new LogsListController();
     private final StrictModeController control = new StrictModeController();
     private RecyclerView rv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

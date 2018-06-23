@@ -63,6 +63,9 @@ public class MainMenuController {
                 Intent intent5 = new Intent(context, CrmListActivity.class);
                 context.startActivity(intent5);
                 break;
+                default:
+                    Log.i("info", "goToActivity: failed");
+                    break;
 
         }
     }

@@ -18,6 +18,7 @@ public class ClientListActivity extends AppCompatActivity {
     private final StrictModeController control = new StrictModeController();
     private RecyclerView rv;
     private ClientListController client = new ClientListController();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
