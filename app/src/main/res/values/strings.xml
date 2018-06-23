@@ -39,5 +39,6 @@
     <string name="enddate">End Date</string>
     <string name="crm_list">Lista De Eventos</string>
     <string name="baseurl">http://thmc.ddns.net:81</string>
+    <string name="searchbutton">search</string>
 
 </resources>

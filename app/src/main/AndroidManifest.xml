@@ -22,8 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".menu.MainMenuActivity"
-            android:noHistory="true"/>
+        <activity android:name=".menu.MainMenuActivity"/>
         <activity
             android:name=".user.UserListActivity"
             android:screenOrientation="portrait"

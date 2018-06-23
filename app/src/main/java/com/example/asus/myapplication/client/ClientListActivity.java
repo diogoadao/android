@@ -32,6 +32,7 @@ public class ClientListActivity extends AppCompatActivity {
                 ClientListActivity.this.startActivity(intent);
             }
         });
+
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
