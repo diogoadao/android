@@ -9,8 +9,8 @@ import com.example.asus.myapplication.R;
 
 public class ClientListViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView IDComp, CompName, Address;
-    private CardView card_view;
+     protected TextView IDComp, CompName, Address;
+     protected CardView card_view;
 
     public ClientListViewHolder(View itemView) {
         super(itemView);

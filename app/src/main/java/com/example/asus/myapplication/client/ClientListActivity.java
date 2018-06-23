@@ -19,7 +19,6 @@ public class ClientListActivity extends AppCompatActivity {
     private ImageButton mbutton;
     private RecyclerView rv;
     private ClientListController client = new ClientListController();
-    private ImageButton mbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,12 +36,12 @@ public class ClientListActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                ClientListAdapter adapter = new ClientListAdapter(ClientListActivity.this, client.GetIdClient(), client.GetClientName(), client.GetAddress());
+                ClientListAdapter adapter = new ClientListAdapter(ClientListActivity.this, client.getIdClient(), client.getClientName(), client.getAddress());
                 Log.i("info", "adapter created: Confirmed");
                 rv.setAdapter(adapter);
             }
         };
-        client.GetList();
+        client.getList();
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new GridLayoutManager(this, 1));
         rv.setHasFixedSize(true);

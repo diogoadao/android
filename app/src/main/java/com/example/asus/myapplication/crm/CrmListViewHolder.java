@@ -9,8 +9,8 @@ import com.example.asus.myapplication.R;
 
 public class CrmListViewHolder extends RecyclerView.ViewHolder {
 
-    private TextView CRM_ID, StartDate, EndDate, Exec, CompName;
-    private CardView card_view;
+    protected TextView CRM_ID, StartDate, EndDate, Exec, CompName;
+    protected CardView card_view;
 
     public CrmListViewHolder(View itemView) {
         super(itemView);
