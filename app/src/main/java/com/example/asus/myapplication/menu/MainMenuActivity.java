@@ -1,49 +1,25 @@
-package com.example.asus.myapplication.Menu;
+package com.example.asus.myapplication.menu;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
-import com.example.asus.myapplication.Client.ClientListActivity;
-import com.example.asus.myapplication.Crm.CrmListActivity;
-import com.example.asus.myapplication.Login.LoginActivity;
-import com.example.asus.myapplication.Logs.LogsListActivity;
 import com.example.asus.myapplication.R;
-import com.example.asus.myapplication.User.UserListActivity;
 import com.example.asus.myapplication.utils.StrictModeController;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 
 public class MainMenuActivity extends AppCompatActivity {
-    public PieChart pieChart;
-    private ImageButton mbutton;
     private final MainMenuController Menu = new MainMenuController();
     private final StrictModeController control = new StrictModeController();
+    public PieChart pieChart;
+    private ImageButton mbutton;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,17 +42,15 @@ public class MainMenuActivity extends AppCompatActivity {
                 popup.getMenuInflater().inflate(R.menu.actions, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        Menu.GoTO(item.getItemId(), MainMenuActivity.this);
+                        Menu.goToActivity(item.getItemId(), MainMenuActivity.this);
 
                         return true;
                     }
-            });
+                });
                 popup.show();
-        }
-    });
-}
-
-
+            }
+        });
+    }
 
 
 }

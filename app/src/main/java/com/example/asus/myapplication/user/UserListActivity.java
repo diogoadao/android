@@ -1,10 +1,7 @@
-package com.example.asus.myapplication.User;
+package com.example.asus.myapplication.user;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,30 +9,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.utils.StrictModeController;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 public class UserListActivity extends AppCompatActivity {
-    private RecyclerView rv;
-    private ImageButton mbutton;
     private final UserListController data = new UserListController();
     private final StrictModeController control = new StrictModeController();
+    private RecyclerView rv;
+    private ImageButton mbutton;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +30,7 @@ public class UserListActivity extends AppCompatActivity {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                UserListAdapter adapter = new UserListAdapter(UserListActivity.this, data.GetUserID(), data.GetUserEmail(), data.GetUserCompleted(), data.GetUserDone(), data.GetUserWork(), data.GetUser(), data.GetUserState());
+                UserListAdapter adapter = new UserListAdapter(UserListActivity.this, data.getUserID(), data.getUserEmail(), data.getUserCompleted(), data.getUserDone(), data.getUserWork(), data.getUser(), data.getUserState());
                 Log.i("info", "adapter created: Confirmed");
                 rv.setAdapter(adapter);
             }

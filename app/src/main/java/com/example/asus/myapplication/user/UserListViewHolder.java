@@ -1,4 +1,4 @@
-package com.example.asus.myapplication.User;
+package com.example.asus.myapplication.user;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;

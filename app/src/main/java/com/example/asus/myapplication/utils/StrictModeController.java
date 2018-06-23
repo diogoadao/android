@@ -1,7 +1,7 @@
 package com.example.asus.myapplication.utils;
 
 public class StrictModeController {
-    public void turnStrict(){
+    public void turnStrict() {
         android.os.StrictMode.setThreadPolicy(new android.os.StrictMode.ThreadPolicy.Builder()
                 .detectAll()
                 .penaltyLog()

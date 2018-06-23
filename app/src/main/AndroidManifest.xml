@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".login.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:noHistory="true">
@@ -22,22 +22,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu.MainMenuActivity"
+        <activity android:name=".menu.MainMenuActivity"
             android:noHistory="true"/>
         <activity
-            android:name=".User.UserListActivity"
+            android:name=".user.UserListActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"/>
         <activity
-            android:name=".Logs.LogsListActivity"
+            android:name=".logs.LogsListActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"/>
         <activity
-            android:name=".Client.ClientListActivity"
+            android:name=".client.ClientListActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"/>
         <activity
-            android:name=".Crm.CrmListActivity"
+            android:name=".crm.CrmListActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"/>
     </application>

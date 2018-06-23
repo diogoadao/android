@@ -1,4 +1,4 @@
-package com.example.asus.myapplication.Logs;
+package com.example.asus.myapplication.logs;
 
 import android.content.Context;
 import android.graphics.Color;

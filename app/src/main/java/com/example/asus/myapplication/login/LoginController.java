@@ -1,10 +1,10 @@
-package com.example.asus.myapplication.Login;
+package com.example.asus.myapplication.login;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.asus.myapplication.Menu.MainMenuActivity;
+import com.example.asus.myapplication.menu.MainMenuActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,14 +14,15 @@ public class LoginController {
         int i = Integer.parseInt(Obj.getString("acess_level"));
         if (i == 1) {
             Log.d("Info", "Login Approved");
-            GoToMenu(context);
+            goToMenu(context);
             return true;
         } else {
             Log.d("Info", "Login Denied");
             return false;
         }
     }
-    public void GoToMenu(Context context){
+
+    public void goToMenu(Context context) {
         Intent intent = new Intent(context, MainMenuActivity.class);
         context.startActivity(intent);
     }

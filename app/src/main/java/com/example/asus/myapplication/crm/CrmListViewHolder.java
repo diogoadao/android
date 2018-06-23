@@ -1,4 +1,4 @@
-package com.example.asus.myapplication.Crm;
+package com.example.asus.myapplication.crm;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -9,7 +9,7 @@ import com.example.asus.myapplication.R;
 
 public class CrmListViewHolder extends RecyclerView.ViewHolder {
 
-    TextView CRM_ID, StartDate,EndDate, Exec,CompName;
+    TextView CRM_ID, StartDate, EndDate, Exec, CompName;
     CardView card_view;
 
     public CrmListViewHolder(View itemView) {

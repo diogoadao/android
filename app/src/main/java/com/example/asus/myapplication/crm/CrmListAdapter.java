@@ -1,4 +1,4 @@
-package com.example.asus.myapplication.Crm;
+package com.example.asus.myapplication.crm;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -13,12 +13,12 @@ import com.example.asus.myapplication.R;
 import java.util.ArrayList;
 
 public class CrmListAdapter extends RecyclerView.Adapter<CrmListViewHolder> {
-//CRM'S
+    //CRM'S
     Context _context;
-    ArrayList<String> IDCRM, exec, startdate , enddate , company ,State;
+    ArrayList<String> IDCRM, exec, startdate, enddate, company, State;
     CardView card_view;
 
-    public CrmListAdapter(Context _context, ArrayList<String> idcrm, ArrayList<String> exec, ArrayList<String> startdate , ArrayList<String> enddate, ArrayList<String> company, ArrayList<String> state) {
+    public CrmListAdapter(Context _context, ArrayList<String> idcrm, ArrayList<String> exec, ArrayList<String> startdate, ArrayList<String> enddate, ArrayList<String> company, ArrayList<String> state) {
         this._context = _context;
         this.IDCRM = idcrm;
         this.exec = exec;
@@ -44,9 +44,9 @@ public class CrmListAdapter extends RecyclerView.Adapter<CrmListViewHolder> {
         //BIND DATA
         if (State.get(position).contains("0")) {
             holder.card_view.setCardBackgroundColor(Color.rgb(255, 209, 26));//Em Curso
-        } else if (State.get(position).contains("1")){
+        } else if (State.get(position).contains("1")) {
             holder.card_view.setCardBackgroundColor(Color.rgb(255, 173, 51));//Concluídos mas não fechados
-        }else{
+        } else {
             holder.card_view.setCardBackgroundColor(Color.rgb(0, 179, 60));//Concluídos
         }
         holder.CRM_ID.setText("ID: " + IDCRM.get(position));

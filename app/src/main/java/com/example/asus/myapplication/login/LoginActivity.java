@@ -1,22 +1,17 @@
-package com.example.asus.myapplication.Login;
+package com.example.asus.myapplication.login;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
-import com.example.asus.myapplication.User.UserListActivity;
 import com.example.asus.myapplication.utils.StrictModeController;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
@@ -33,25 +28,25 @@ import okhttp3.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static String data;
+    private final StrictModeController control = new StrictModeController();
+    Handler handler = new Handler();
+    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .addNetworkInterceptor(new StethoInterceptor())
+            .build();
     private Button loginbtn;
     private EditText mypass, myemail;
     private boolean login_bool;
     private Context context;
     private ProgressDialog prog;
     private ConstraintLayout rellay1;
-    private ImageView logo;
-    Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
             rellay1.setVisibility(View.VISIBLE);
         }
     };
-    private final StrictModeController control = new StrictModeController();
-    public static String data;
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .addNetworkInterceptor(new StethoInterceptor())
-            .build();
+    private ImageView logo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         control.turnStrict();
         context = this;
-        loginbtn = (Button) findViewById(R.id.btn_login);
+        loginbtn = findViewById(R.id.btn_login);
         myemail = findViewById(R.id.myemail);
         mypass = findViewById(R.id.mypass);
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        rellay1 = (ConstraintLayout) findViewById(R.id.rellay1);
+        rellay1 = findViewById(R.id.rellay1);
         handler.postDelayed(runnable, 2000);
 
 
@@ -104,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginController login = new LoginController();
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
-                    login_bool = login.LoginCheck(jObj,context);
+                    login_bool = login.LoginCheck(jObj, context);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -1,8 +1,10 @@
-package com.example.asus.myapplication.Client;
+package com.example.asus.myapplication.logs;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
-import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.menu.MainMenuActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -18,23 +20,22 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class ClientListController {
-    private ArrayList<String> ClientName = new ArrayList<String>();
-    private ArrayList<String> IdClient = new ArrayList<String>();
-    private ArrayList<String> Address = new ArrayList<String>();
+public class LogsListController {
+
+    private ArrayList<String> Username = new ArrayList<String>();
+    private ArrayList<String> LogID = new ArrayList<String>();
+    private ArrayList<String> Date = new ArrayList<String>();
     private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
 
-    public void GetList(){
-
+    public void GetList() {
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=Clients")
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=Logs")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {
-
             @Override
             public void onFailure(Call call, IOException e) {
                 call.cancel();
@@ -48,29 +49,37 @@ public class ClientListController {
                     JSONArray jObj = new JSONArray(myResponse);
                     for (int i = 0; i < jObj.length(); i++) {
                         JSONObject obj = jObj.getJSONObject(i);
-                        String id = obj.getString("id");
-                        String name = obj.getString("name");
-                        String addresss = obj.getString("addresss");
-                        Address.add(addresss);
-                        ClientName.add(name);
-                        IdClient.add(id);
+                        String id_log = obj.getString("id_log");
+                        String fname = obj.getString("fname");
+                        String lname = obj.getString("lname");
+                        String date = obj.getString("date");
+                        Date.add(date);
+                        Username.add(fname + " " + lname);
+                        LogID.add(id_log);
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
     }
-    public ArrayList<String> GetClientName() {
-        return this.ClientName;
+
+
+    public ArrayList<String> getDate() {
+        return Date;
     }
 
-    public ArrayList<String> GetIdClient() {
-        return this.IdClient;
+    public ArrayList<String> getUser() {
+        return Username;
     }
 
-    public ArrayList<String> GetAddress() {
-        return this.Address;
+    public ArrayList<String> getLogID() {
+        return LogID;
     }
+
+    public void GotoMenu(Context context) {
+        Intent intent = new Intent(context, MainMenuActivity.class);
+        context.startActivity(intent);
+    }
+
 }

@@ -1,10 +1,10 @@
-package com.example.asus.myapplication.Crm;
+package com.example.asus.myapplication.crm;
 
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.example.asus.myapplication.Menu.MainMenuActivity;
+import com.example.asus.myapplication.menu.MainMenuActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -32,7 +32,7 @@ public class CrmListController {
             .build();
 
 
-    public void GetList(){
+    public void GetList() {
 
         Request request = new Request.Builder()
                 .url("http://thmc.ddns.net:81/android/api/api.php?action=crm")
@@ -50,7 +50,7 @@ public class CrmListController {
             public void onResponse(Call call, final Response response) throws IOException {
                 Log.i("info", "request got response: response");
                 final String myResponse = response.body().string();
-                Log.i("info", "request got response: response"+myResponse);
+                Log.i("info", "request got response: response" + myResponse);
                 try {
                     JSONArray jObj = new JSONArray(myResponse);
                     for (int i = 0; i < jObj.length(); i++) {
@@ -74,31 +74,33 @@ public class CrmListController {
             }
         });
     }
-    public void GotoMenu(Context context){
+
+    public void GotoMenu(Context context) {
         Intent intent = new Intent(context, MainMenuActivity.class);
         context.startActivity(intent);
     }
-    public ArrayList<String> GetID() {
+
+    public ArrayList<String> getID() {
         return this.IDCRM;
     }
 
-    public ArrayList<String> Getexec() {
+    public ArrayList<String> getexec() {
         return this.exec;
     }
 
-    public ArrayList<String> GetStartdate() {
+    public ArrayList<String> getStartdate() {
         return this.Startdate;
     }
 
-    public ArrayList<String> GetEnddate() {
+    public ArrayList<String> getEnddate() {
         return this.Enddate;
     }
 
-    public ArrayList<String> GetCompany() {
+    public ArrayList<String> getCompany() {
         return this.Company;
     }
 
-    public ArrayList<String> GetState() {
+    public ArrayList<String> getState() {
         return this.State;
     }
 }

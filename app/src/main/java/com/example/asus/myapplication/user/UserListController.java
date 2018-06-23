@@ -1,13 +1,10 @@
-package com.example.asus.myapplication.User;
+package com.example.asus.myapplication.user;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.example.asus.myapplication.Menu.MainMenuActivity;
-import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.menu.MainMenuActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -82,31 +79,31 @@ public class UserListController {
     }
 
 
-    public ArrayList<String> GetUser() {
+    public ArrayList<String> getUser() {
         return this.username;
     }
 
-    public ArrayList<String> GetUserID() {
+    public ArrayList<String> getUserID() {
         return this.UserID;
     }
 
-    public ArrayList<String> GetUserEmail() {
+    public ArrayList<String> getUserEmail() {
         return this.Email;
     }
 
-    public ArrayList<String> GetUserWork() {
+    public ArrayList<String> getUserWork() {
         return this.Work;
     }
 
-    public ArrayList<String> GetUserCompleted() {
+    public ArrayList<String> getUserCompleted() {
         return this.Completed;
     }
 
-    public ArrayList<String> GetUserState() {
+    public ArrayList<String> getUserState() {
         return this.State;
     }
 
-    public ArrayList<String> GetUserDone() {
+    public ArrayList<String> getUserDone() {
         return this.Done;
     }
 

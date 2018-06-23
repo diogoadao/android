@@ -1,10 +1,7 @@
-package com.example.asus.myapplication.Logs;
+package com.example.asus.myapplication.crm;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,35 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
-import com.example.asus.myapplication.User.UserListActivity;
-import com.example.asus.myapplication.User.UserListAdapter;
 import com.example.asus.myapplication.utils.StrictModeController;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-public class LogsListActivity extends AppCompatActivity {
+public class CrmListActivity extends AppCompatActivity {
+    private final StrictModeController control = new StrictModeController();
     private ImageButton mbutton;
     private RecyclerView rv;
-    private final LogsListController logs = new LogsListController();
-    private OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .addNetworkInterceptor(new StethoInterceptor())
-            .build();
-    private final StrictModeController control = new StrictModeController();
+    private CrmListController crm = new CrmListController();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,23 +28,22 @@ public class LogsListActivity extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logs.GotoMenu(LogsListActivity.this);
+                crm.GotoMenu(CrmListActivity.this);
             }
         });
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                LogsListAdapter adapter = new LogsListAdapter(LogsListActivity.this, logs.GetLogID(), logs.GetUser(), logs.GetDate());
+                CrmListAdapter adapter = new CrmListAdapter(CrmListActivity.this, crm.getID(), crm.getexec(), crm.getStartdate(), crm.getEnddate(), crm.getCompany(), crm.getState());
                 Log.i("info", "adapter created: Confirmed");
                 rv.setAdapter(adapter);
             }
         };
+        crm.GetList();
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new GridLayoutManager(this, 1));
         rv.setHasFixedSize(true);
-        logs.GetList();
         handler.postDelayed(runnable, 500);
-
     }
 }

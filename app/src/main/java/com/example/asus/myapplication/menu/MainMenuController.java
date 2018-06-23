@@ -1,16 +1,16 @@
-package com.example.asus.myapplication.Menu;
+package com.example.asus.myapplication.menu;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 
-import com.example.asus.myapplication.Client.ClientListActivity;
-import com.example.asus.myapplication.Crm.CrmListActivity;
-import com.example.asus.myapplication.Login.LoginActivity;
-import com.example.asus.myapplication.Logs.LogsListActivity;
 import com.example.asus.myapplication.R;
-import com.example.asus.myapplication.User.UserListActivity;
+import com.example.asus.myapplication.client.ClientListActivity;
+import com.example.asus.myapplication.crm.CrmListActivity;
+import com.example.asus.myapplication.login.LoginActivity;
+import com.example.asus.myapplication.logs.LogsListActivity;
+import com.example.asus.myapplication.user.UserListActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -36,7 +36,7 @@ public class MainMenuController {
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
 
-    public void GoTO(int Item, Context context) {
+    public void goToActivity(int Item, Context context) {
         switch (Item) {
             case R.id.userlist:
 
