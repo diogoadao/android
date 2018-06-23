@@ -9,8 +9,8 @@ import com.example.asus.myapplication.R;
 
 public class LogsListViewHolder extends RecyclerView.ViewHolder {
 
-    TextView Log_ID, Date, Username;
-    CardView card_view;
+    private TextView Log_ID, Date, Username;
+    private CardView card_view;
 
     public LogsListViewHolder(View itemView) {
         super(itemView);

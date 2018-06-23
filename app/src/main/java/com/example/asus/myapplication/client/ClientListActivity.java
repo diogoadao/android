@@ -19,7 +19,7 @@ public class ClientListActivity extends AppCompatActivity {
     private ImageButton mbutton;
     private RecyclerView rv;
     private ClientListController client = new ClientListController();
-
+    private ImageButton mbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

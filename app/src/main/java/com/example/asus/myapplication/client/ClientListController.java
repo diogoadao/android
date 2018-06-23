@@ -25,7 +25,7 @@ public class ClientListController {
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
 
-    public void GetList() {
+    public void getList() {
 
         Request request = new Request.Builder()
                 .url("http://thmc.ddns.net:81/android/api/api.php?action=Clients")
@@ -62,15 +62,15 @@ public class ClientListController {
         });
     }
 
-    public ArrayList<String> GetClientName() {
+    public ArrayList<String> getClientName() {
         return this.ClientName;
     }
 
-    public ArrayList<String> GetIdClient() {
+    public ArrayList<String> getIdClient() {
         return this.IdClient;
     }
 
-    public ArrayList<String> GetAddress() {
+    public ArrayList<String> getAddress() {
         return this.Address;
     }
 }

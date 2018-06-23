@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class LogsListAdapter extends RecyclerView.Adapter<LogsListViewHolder> {
 
-    Context _context;
-    ArrayList<String> logid, username, date;
-    CardView card_view;
+    private Context _context;
+    private ArrayList<String> logid, username, date;
+    private CardView card_view;
 
     public LogsListAdapter(Context _context, ArrayList<String> logid, ArrayList<String> username, ArrayList<String> date) {
         this._context = _context;

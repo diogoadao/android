@@ -16,6 +16,7 @@ public class UserListActivity extends AppCompatActivity {
     private final UserListController data = new UserListController();
     private final StrictModeController control = new StrictModeController();
     private RecyclerView rv;
+
     private ImageButton mbutton;
 
     @Override

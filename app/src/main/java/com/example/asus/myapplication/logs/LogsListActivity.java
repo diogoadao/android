@@ -33,7 +33,7 @@ public class LogsListActivity extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logs.GotoMenu(LogsListActivity.this);
+                logs.gotoMenu(LogsListActivity.this);
             }
         });
         Handler handler = new Handler();

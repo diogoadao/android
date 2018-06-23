@@ -30,8 +30,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public static String data;
     private final StrictModeController control = new StrictModeController();
-    Handler handler = new Handler();
-    OkHttpClient okHttpClient = new OkHttpClient.Builder()
+    private Handler handler = new Handler();
+    private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
     private Button loginbtn;

@@ -77,7 +77,7 @@ public class LogsListController {
         return LogID;
     }
 
-    public void GotoMenu(Context context) {
+    public void gotoMenu(Context context) {
         Intent intent = new Intent(context, MainMenuActivity.class);
         context.startActivity(intent);
     }

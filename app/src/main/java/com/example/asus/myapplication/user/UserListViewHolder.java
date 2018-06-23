@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.example.asus.myapplication.R;
 
 public class UserListViewHolder extends RecyclerView.ViewHolder {
-    TextView userid, email, completed, done, work, username;
-    CardView card_view;
+    private TextView userid, email, completed, done, work, username;
+    private CardView card_view;
 
     public UserListViewHolder(View itemView) {
         super(itemView);

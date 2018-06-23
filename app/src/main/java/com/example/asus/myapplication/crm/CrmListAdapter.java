@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class CrmListAdapter extends RecyclerView.Adapter<CrmListViewHolder> {
     //CRM'S
-    Context _context;
-    ArrayList<String> IDCRM, exec, startdate, enddate, company, State;
-    CardView card_view;
+    private Context _context;
+    private ArrayList<String> IDCRM, exec, startdate, enddate, company, State;
+    private CardView card_view;
 
     public CrmListAdapter(Context _context, ArrayList<String> idcrm, ArrayList<String> exec, ArrayList<String> startdate, ArrayList<String> enddate, ArrayList<String> company, ArrayList<String> state) {
         this._context = _context;

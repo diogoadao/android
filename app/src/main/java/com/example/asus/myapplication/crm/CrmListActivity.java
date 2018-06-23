@@ -28,7 +28,7 @@ public class CrmListActivity extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                crm.GotoMenu(CrmListActivity.this);
+                crm.gotoMenu(CrmListActivity.this);
             }
         });
         Handler handler = new Handler();
