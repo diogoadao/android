@@ -1,16 +1,18 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Client;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-public class Client_List_ViewHolder extends RecyclerView.ViewHolder {
+import com.example.asus.myapplication.R;
+
+public class ClientListViewHolder extends RecyclerView.ViewHolder {
 
     TextView IDComp, CompName, Address;
     CardView card_view;
 
-    public Client_List_ViewHolder(View itemView) {
+    public ClientListViewHolder(View itemView) {
         super(itemView);
         Address = itemView.findViewById(R.id.ecompanyAddress);
         CompName = itemView.findViewById(R.id.company);

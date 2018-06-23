@@ -1,11 +1,11 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Login;
 
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Login_Controller {
+public class LoginController {
     public boolean LoginCheck(JSONObject Obj) throws JSONException {
         int i = Integer.parseInt(Obj.getString("acess_level"));
         if (i == 1) {

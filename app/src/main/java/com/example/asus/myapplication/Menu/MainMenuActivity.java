@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Menu;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,6 +11,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 
+import com.example.asus.myapplication.Client.ClientListActivity;
+import com.example.asus.myapplication.Crm.CrmListActivity;
+import com.example.asus.myapplication.Login.LoginActivity;
+import com.example.asus.myapplication.Logs.LogsListActivity;
+import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.User.UserListActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -31,7 +37,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class Main_Menu extends AppCompatActivity {
+public class MainMenuActivity extends AppCompatActivity {
     public final ArrayList<Entry> yvalues = new ArrayList<Entry>();
     public PieChart pieChart;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -60,34 +66,34 @@ public class Main_Menu extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PopupMenu popup = new PopupMenu(Main_Menu.this, mbutton);
+                PopupMenu popup = new PopupMenu(MainMenuActivity.this, mbutton);
                 popup.getMenuInflater().inflate(R.menu.actions, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         switch ("" + item.getTitle()) {
                             case "Lista De Utilizadores":
 
-                                Intent intent = new Intent(Main_Menu.this, User_List.class);
+                                Intent intent = new Intent(MainMenuActivity.this, UserListActivity.class);
                                 startActivity(intent);
                                 break;
                             case "Lista de Logins":
 
-                                Intent intent2 = new Intent(Main_Menu.this, Logs_List.class);
+                                Intent intent2 = new Intent(MainMenuActivity.this, LogsListActivity.class);
                                 startActivity(intent2);
                                 break;
                             case "Lista de Clientes":
 
-                                Intent intent3 = new Intent(Main_Menu.this, Client_List.class);
+                                Intent intent3 = new Intent(MainMenuActivity.this, ClientListActivity.class);
                                 startActivity(intent3);
                                 break;
                             case "LogOut":
 
-                                Intent intent4 = new Intent(Main_Menu.this, Login_Activity.class);
+                                Intent intent4 = new Intent(MainMenuActivity.this, LoginActivity.class);
                                 startActivity(intent4);
                                 break;
                             case "Lista De Eventos":
 
-                                Intent intent5 = new Intent(Main_Menu.this, Crm_List.class);
+                                Intent intent5 = new Intent(MainMenuActivity.this, CrmListActivity.class);
                                 startActivity(intent5);
                                 break;
 

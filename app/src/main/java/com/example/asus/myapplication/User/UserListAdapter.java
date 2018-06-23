@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.User;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,14 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.asus.myapplication.R;
+
 import java.util.ArrayList;
 
-public class User_List_Adapter extends RecyclerView.Adapter<User_List_ViewHolder> {
+public class UserListAdapter extends RecyclerView.Adapter<UserListViewHolder> {
     Context _context;
     ArrayList<String> userid, email, completed, done, work, username, state;
     CardView card_view;
 
-    public User_List_Adapter(Context _context, ArrayList<String> userid, ArrayList<String> email, ArrayList<String> completed, ArrayList<String> done, ArrayList<String> work, ArrayList<String> username, ArrayList<String> state) {
+    public UserListAdapter(Context _context, ArrayList<String> userid, ArrayList<String> email, ArrayList<String> completed, ArrayList<String> done, ArrayList<String> work, ArrayList<String> username, ArrayList<String> state) {
         this._context = _context;
         this.userid = userid;
         this.email = email;
@@ -28,16 +30,16 @@ public class User_List_Adapter extends RecyclerView.Adapter<User_List_ViewHolder
     }
 
     @Override
-    public User_List_ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UserListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(_context).inflate(R.layout.userlist, parent, false);
         int height = parent.getMeasuredHeight() / 4;
         v.setMinimumHeight(height);
-        return new User_List_ViewHolder(v);
+        return new UserListViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(User_List_ViewHolder holder, int position) {
+    public void onBindViewHolder(UserListViewHolder holder, int position) {
 
         //BIND DATA
 

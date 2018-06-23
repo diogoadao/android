@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Client;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.asus.myapplication.Menu.MainMenuActivity;
+import com.example.asus.myapplication.R;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -26,7 +28,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Client_List extends AppCompatActivity {
+public class ClientListActivity extends AppCompatActivity {
     private ImageButton mbutton;
     private Context _context;
     private ArrayList<String> ClientName = new ArrayList<String>();
@@ -46,8 +48,8 @@ public class Client_List extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Client_List.this, Main_Menu.class);
-                Client_List.this.startActivity(intent);
+                Intent intent = new Intent(ClientListActivity.this, MainMenuActivity.class);
+                ClientListActivity.this.startActivity(intent);
             }
         });
         Request request = new Request.Builder()
@@ -86,7 +88,7 @@ public class Client_List extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new GridLayoutManager(_context, 1));
         rv.setHasFixedSize(true);
-        Client_List_Adapter adapter = new Client_List_Adapter(_context,IdClient,ClientName,Address);
+        ClientListAdapter adapter = new ClientListAdapter(_context,IdClient,ClientName,Address);
         try {
             TimeUnit.MILLISECONDS.sleep(500);
             Log.i("info", "adapter created: Confirmed");

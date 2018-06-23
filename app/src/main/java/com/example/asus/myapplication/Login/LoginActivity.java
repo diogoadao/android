@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.asus.myapplication.Menu.MainMenuActivity;
+import com.example.asus.myapplication.R;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONException;
@@ -26,7 +28,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Login_Activity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private Button loginbtn;
     private EditText mypass , myemail;
@@ -67,7 +69,7 @@ public class Login_Activity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prog = new ProgressDialog(Login_Activity.this);
+                prog = new ProgressDialog(LoginActivity.this);
                 prog.setTitle(getString(R.string.pleaseWait));
                 prog.setMessage(getString(R.string.webpage_being_loaded));
                 prog.setCancelable(false);
@@ -103,7 +105,7 @@ public class Login_Activity extends AppCompatActivity {
                 final String myResponse = response.body().string();
                 try {
                     prog.dismiss();
-                    Login_Controller login = new Login_Controller();
+                    LoginController login = new LoginController();
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
                     login_bool = login.LoginCheck(jObj);
@@ -111,8 +113,8 @@ public class Login_Activity extends AppCompatActivity {
                     Log.d("Info", "Boolean state"+login_bool);
                     if (login_bool == true) {
                         Log.d("Info", "Login approved v2 asdas");
-                        Intent intent = new Intent(Login_Activity.this, Main_Menu.class);
-                        Login_Activity.this.startActivity(intent);
+                        Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
+                        LoginActivity.this.startActivity(intent);
                     } else {
 
                         Log.d("Info", "Login Denied v2");

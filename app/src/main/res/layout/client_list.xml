@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="140dp"
     android:background="@drawable/grad_bg"
-    tools:context=".Client_List">
+    tools:context=".Client.ClientListActivity">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"

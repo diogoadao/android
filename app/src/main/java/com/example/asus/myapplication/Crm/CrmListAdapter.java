@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Crm;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,15 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.asus.myapplication.R;
+
 import java.util.ArrayList;
 
-public class Crm_List_Adapter extends RecyclerView.Adapter<Crm_List_ViewHolder> {
+public class CrmListAdapter extends RecyclerView.Adapter<CrmListViewHolder> {
 //CRM'S
     Context _context;
     ArrayList<String> IDCRM, exec, startdate , enddate , company ,State;
     CardView card_view;
 
-    public Crm_List_Adapter(Context _context, ArrayList<String> idcrm, ArrayList<String> exec, ArrayList<String> startdate , ArrayList<String> enddate, ArrayList<String> company, ArrayList<String> state) {
+    public CrmListAdapter(Context _context, ArrayList<String> idcrm, ArrayList<String> exec, ArrayList<String> startdate , ArrayList<String> enddate, ArrayList<String> company, ArrayList<String> state) {
         this._context = _context;
         this.IDCRM = idcrm;
         this.exec = exec;
@@ -28,16 +30,16 @@ public class Crm_List_Adapter extends RecyclerView.Adapter<Crm_List_ViewHolder> 
     }
 
     @Override
-    public Crm_List_ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CrmListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(_context).inflate(R.layout.crm, parent, false);
         int height = parent.getMeasuredHeight() / 4;
         v.setMinimumHeight(height);
-        return new Crm_List_ViewHolder(v);
+        return new CrmListViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(Crm_List_ViewHolder holder, int position) {
+    public void onBindViewHolder(CrmListViewHolder holder, int position) {
 
         //BIND DATA
         if (State.get(position).contains("0")) {
