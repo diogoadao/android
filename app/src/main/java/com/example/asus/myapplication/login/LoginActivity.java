@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginController login = new LoginController();
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
-                    login.LoginCheck(jObj, context);
+                    login.loginCheck(jObj, context);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

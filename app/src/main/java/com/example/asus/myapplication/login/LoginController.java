@@ -10,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginController {
-    public boolean LoginCheck(JSONObject Obj, Context context) throws JSONException {
+    public boolean loginCheck(JSONObject Obj, Context context) throws JSONException {
         int i = Integer.parseInt(Obj.getString("acess_level"));
         if (i == 1) {
             Log.d("Info", "Login Approved");
