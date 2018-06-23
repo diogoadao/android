@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Client;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -8,15 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.asus.myapplication.R;
+
 import java.util.ArrayList;
 
-public class Client_List_Adapter extends RecyclerView.Adapter<Client_List_ViewHolder> {
+public class ClientListAdapter extends RecyclerView.Adapter<ClientListViewHolder> {
 
     Context _context;
     ArrayList<String> IDComp, CompName, Address;
     CardView card_view;
 
-    public Client_List_Adapter(Context _context, ArrayList<String> IDComp, ArrayList<String> CompName, ArrayList<String> Address) {
+    public ClientListAdapter(Context _context, ArrayList<String> IDComp, ArrayList<String> CompName, ArrayList<String> Address) {
         this._context = _context;
         this.IDComp = IDComp;
         this.CompName = CompName;
@@ -25,16 +27,16 @@ public class Client_List_Adapter extends RecyclerView.Adapter<Client_List_ViewHo
     }
 
     @Override
-    public Client_List_ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ClientListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(_context).inflate(R.layout.client_list, parent, false);
         int height = parent.getMeasuredHeight() / 4;
         v.setMinimumHeight(height);
-        return new Client_List_ViewHolder(v);
+        return new ClientListViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(Client_List_ViewHolder holder, int position) {
+    public void onBindViewHolder(ClientListViewHolder holder, int position) {
 
         //BIND DATA
         holder.card_view.setCardBackgroundColor(Color.rgb(255, 255, 255));

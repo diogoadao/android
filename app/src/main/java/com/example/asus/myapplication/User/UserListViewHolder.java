@@ -1,15 +1,17 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.User;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-public class User_List_ViewHolder extends RecyclerView.ViewHolder {
+import com.example.asus.myapplication.R;
+
+public class UserListViewHolder extends RecyclerView.ViewHolder {
     TextView userid, email, completed, done, work, username;
     CardView card_view;
 
-    public User_List_ViewHolder(View itemView) {
+    public UserListViewHolder(View itemView) {
         super(itemView);
         userid = itemView.findViewById(R.id.iduser);
         email = itemView.findViewById(R.id.useremail);

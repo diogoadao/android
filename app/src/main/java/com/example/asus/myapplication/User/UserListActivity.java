@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.User;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.asus.myapplication.Menu.MainMenuActivity;
+import com.example.asus.myapplication.R;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -26,7 +28,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class User_List extends AppCompatActivity {
+public class UserListActivity extends AppCompatActivity {
     RecyclerView rv;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
@@ -51,8 +53,8 @@ public class User_List extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(User_List.this, Main_Menu.class);
-                User_List.this.startActivity(intent);
+                Intent intent = new Intent(UserListActivity.this, MainMenuActivity.class);
+                UserListActivity.this.startActivity(intent);
             }
         });
         context = this;
@@ -104,7 +106,7 @@ public class User_List extends AppCompatActivity {
         rv.setLayoutManager(new GridLayoutManager(context, 1));
         rv.setHasFixedSize(true);
 
-        User_List_Adapter adapter = new User_List_Adapter(context, UserID, Email, Completed, Done, Work, username, State);
+        UserListAdapter adapter = new UserListAdapter(context, UserID, Email, Completed, Done, Work, username, State);
         try {
 
             TimeUnit.MILLISECONDS.sleep(500);

@@ -1,4 +1,4 @@
-package com.example.asus.myapplication;
+package com.example.asus.myapplication.Logs;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.asus.myapplication.Menu.MainMenuActivity;
+import com.example.asus.myapplication.R;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -26,15 +28,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class Crm_List extends AppCompatActivity {
+public class LogsListActivity extends AppCompatActivity {
     private ImageButton mbutton;
     private Context _context;
-    private ArrayList<String> IDCRM = new ArrayList<String>();
-    private ArrayList<String> exec = new ArrayList<String>();
-    private ArrayList<String> Startdate = new ArrayList<String>();
-    private ArrayList<String> Enddate = new ArrayList<String>();
-    private ArrayList<String> Company = new ArrayList<String>();
-    private ArrayList<String> State = new ArrayList<String>();
+    private ArrayList<String> Username = new ArrayList<String>();
+    private ArrayList<String> LogID = new ArrayList<String>();
+    private ArrayList<String> Date = new ArrayList<String>();
     private RecyclerView rv;
     private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
@@ -49,12 +48,12 @@ public class Crm_List extends AppCompatActivity {
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Crm_List.this, Main_Menu.class);
-                startActivity(intent);
+                Intent intent = new Intent(LogsListActivity.this, MainMenuActivity.class);
+                LogsListActivity.this.startActivity(intent);
             }
         });
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=crm")
+                .url("http://thmc.ddns.net:81/android/api/api.php?action=Logs")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);
@@ -68,25 +67,18 @@ public class Crm_List extends AppCompatActivity {
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
                 Log.i("info", "request got response: response");
-
                 final String myResponse = response.body().string();
-                Log.i("info", "request got response: response"+myResponse);
                 try {
                     JSONArray jObj = new JSONArray(myResponse);
                     for (int i = 0; i < jObj.length(); i++) {
                         JSONObject obj = jObj.getJSONObject(i);
-                        String id_crm = obj.getString("idcrm");
-                        String fullname = obj.getString("fullname");
-                        String name = obj.getString("name");
-                        String startdate = obj.getString("startline");
-                        String enddate = obj.getString("deadline");
-                        String state = obj.getString("state");
-                        IDCRM.add(id_crm);
-                        exec.add(fullname);
-                        Startdate.add(startdate);
-                        Enddate.add(enddate);
-                        Company.add(name);
-                        State.add(state);
+                        String id_log = obj.getString("id_log");
+                        String fname = obj.getString("fname");
+                        String lname = obj.getString("lname");
+                        String date = obj.getString("date");
+                        Date.add(date);
+                        Username.add(fname+" "+lname);
+                        LogID.add(id_log);
                     }
 
                 } catch (JSONException e) {
@@ -97,7 +89,7 @@ public class Crm_List extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new GridLayoutManager(_context, 1));
         rv.setHasFixedSize(true);
-        Crm_List_Adapter adapter = new Crm_List_Adapter(_context, IDCRM, exec, Startdate , Enddate, Company, State);
+        LogsListAdapter adapter = new LogsListAdapter(_context,LogID,Username,Date);
         try {
             TimeUnit.MILLISECONDS.sleep(500);
             Log.i("info", "adapter created: Confirmed");
