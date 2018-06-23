@@ -16,6 +16,7 @@ import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.User.UserListActivity;
 import com.example.asus.myapplication.User.UserListAdapter;
+import com.example.asus.myapplication.utils.StrictModeController;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -36,20 +37,12 @@ public class CrmListActivity extends AppCompatActivity {
     private ImageButton mbutton;
     private RecyclerView rv;
     private CrmListController crm = new CrmListController();
+    private final StrictModeController control = new StrictModeController();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logs_recycler);
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .penaltyDeathOnNetwork()
-                .penaltyFlashScreen()
-                .build());
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyDeath()
-                .build());
+        control.turnStrict();
         mbutton = findViewById(R.id.imageButton3);
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override

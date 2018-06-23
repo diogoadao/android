@@ -7,7 +7,7 @@
         android:id="@+id/loglist"
         android:title="@string/loglist" />
     <item
-        android:id="@+id/menu_delete"
+        android:id="@+id/clientlist"
         android:title="@string/Client" />
     <item
         android:id="@+id/CRM"

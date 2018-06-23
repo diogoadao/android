@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.User.UserListActivity;
+import com.example.asus.myapplication.utils.StrictModeController;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONException;
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             rellay1.setVisibility(View.VISIBLE);
         }
     };
-
+    private final StrictModeController control = new StrictModeController();
     public static String data;
     OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
@@ -56,16 +57,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .penaltyDeathOnNetwork()
-                .penaltyFlashScreen()
-                .build());
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyDeath()
-                .build());
+        control.turnStrict();
         context = this;
         loginbtn = (Button) findViewById(R.id.btn_login);
         myemail = findViewById(R.id.myemail);

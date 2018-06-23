@@ -18,6 +18,7 @@ import com.example.asus.myapplication.Login.LoginActivity;
 import com.example.asus.myapplication.Logs.LogsListActivity;
 import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.User.UserListActivity;
+import com.example.asus.myapplication.utils.StrictModeController;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -42,21 +43,12 @@ public class MainMenuActivity extends AppCompatActivity {
     public PieChart pieChart;
     private ImageButton mbutton;
     private final MainMenuController Menu = new MainMenuController();
-
+    private final StrictModeController control = new StrictModeController();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .penaltyDeathOnNetwork()
-                .penaltyFlashScreen()
-                .build());
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyDeath()
-                .build());
+        control.turnStrict();
         mbutton = findViewById(R.id.imageButton3);
         pieChart = findViewById(R.id.chart);
         pieChart.setUsePercentValues(false);
@@ -74,7 +66,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 popup.getMenuInflater().inflate(R.menu.actions, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        Menu.GoTO(item.getTitle().toString(), MainMenuActivity.this);
+                        Menu.GoTO(item.getItemId(), MainMenuActivity.this);
 
                         return true;
                     }

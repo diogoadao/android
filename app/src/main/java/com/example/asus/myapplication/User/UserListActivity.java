@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 
 import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.utils.StrictModeController;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -34,23 +35,14 @@ public class UserListActivity extends AppCompatActivity {
     private RecyclerView rv;
     private ImageButton mbutton;
     private final UserListController data = new UserListController();
-
+    private final StrictModeController control = new StrictModeController();
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.userlist_recycler);
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .penaltyDeathOnNetwork()
-                .penaltyFlashScreen()
-                .build());
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyDeath()
-                .build());
         mbutton = findViewById(R.id.imageButton3);
+        control.turnStrict();
         Log.i("info", "onCreate: imagebutton");
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {

@@ -9,6 +9,7 @@ import com.example.asus.myapplication.Client.ClientListActivity;
 import com.example.asus.myapplication.Crm.CrmListActivity;
 import com.example.asus.myapplication.Login.LoginActivity;
 import com.example.asus.myapplication.Logs.LogsListActivity;
+import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.User.UserListActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.github.mikephil.charting.charts.PieChart;
@@ -32,31 +33,32 @@ import okhttp3.Response;
 public class MainMenuController {
     private final ArrayList<Entry> yvalues = new ArrayList<Entry>();
     private final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-        .addNetworkInterceptor(new StethoInterceptor())
-        .build();
-    public void GoTO(String Item, Context context) {
+            .addNetworkInterceptor(new StethoInterceptor())
+            .build();
+
+    public void GoTO(int Item, Context context) {
         switch (Item) {
-            case "Lista De Utilizadores":
+            case R.id.userlist:
 
                 Intent intent = new Intent(context, UserListActivity.class);
                 context.startActivity(intent);
                 break;
-            case "Lista de Logins":
+            case R.id.loglist:
 
                 Intent intent2 = new Intent(context, LogsListActivity.class);
                 context.startActivity(intent2);
                 break;
-            case "Lista de Clientes":
+            case R.id.clientlist:
 
                 Intent intent3 = new Intent(context, ClientListActivity.class);
                 context.startActivity(intent3);
                 break;
-            case "LogOut":
+            case R.id.logout:
 
                 Intent intent4 = new Intent(context, LoginActivity.class);
                 context.startActivity(intent4);
                 break;
-            case "Lista De Eventos":
+            case R.id.CRM:
 
                 Intent intent5 = new Intent(context, CrmListActivity.class);
                 context.startActivity(intent5);
@@ -64,6 +66,7 @@ public class MainMenuController {
 
         }
     }
+
     public void DoChart(final PieChart pieChart) {
         Request request = new Request.Builder()
                 .url("http://thmc.ddns.net:81/android/api/api.php?action=PieChart")
