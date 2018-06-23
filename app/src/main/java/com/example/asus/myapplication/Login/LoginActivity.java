@@ -1,6 +1,7 @@
 package com.example.asus.myapplication.Login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 
 import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.User.UserListActivity;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONException;
@@ -31,11 +33,12 @@ import okhttp3.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private Button loginbtn;
-    private EditText mypass , myemail;
+    private EditText mypass, myemail;
     private boolean login_bool;
+    private Context context;
     private ProgressDialog prog;
-    ConstraintLayout rellay1;
-    ImageView logo;
+    private ConstraintLayout rellay1;
+    private ImageView logo;
     Handler handler = new Handler();
     Runnable runnable = new Runnable() {
         @Override
@@ -63,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 .detectAll()
                 .penaltyDeath()
                 .build());
+        context = this;
         loginbtn = (Button) findViewById(R.id.btn_login);
         myemail = findViewById(R.id.myemail);
         mypass = findViewById(R.id.mypass);
@@ -108,19 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginController login = new LoginController();
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
-                    login_bool = login.LoginCheck(jObj);
-
-                    Log.d("Info", "Boolean state"+login_bool);
-                    if (login_bool == true) {
-                        Log.d("Info", "Login approved v2 asdas");
-                        Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-                        LoginActivity.this.startActivity(intent);
-                    } else {
-
-                        Log.d("Info", "Login Denied v2");
-                    }
-
-
+                    login_bool = login.LoginCheck(jObj,context);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

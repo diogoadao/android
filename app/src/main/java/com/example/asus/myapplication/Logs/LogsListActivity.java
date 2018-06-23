@@ -3,6 +3,8 @@ package com.example.asus.myapplication.Logs;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,8 @@ import android.widget.ImageButton;
 
 import com.example.asus.myapplication.Menu.MainMenuActivity;
 import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.User.UserListActivity;
+import com.example.asus.myapplication.User.UserListAdapter;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import org.json.JSONArray;
@@ -30,11 +34,8 @@ import okhttp3.Response;
 
 public class LogsListActivity extends AppCompatActivity {
     private ImageButton mbutton;
-    private Context _context;
-    private ArrayList<String> Username = new ArrayList<String>();
-    private ArrayList<String> LogID = new ArrayList<String>();
-    private ArrayList<String> Date = new ArrayList<String>();
     private RecyclerView rv;
+    private final LogsListController logs = new LogsListController();
     private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
@@ -43,60 +44,37 @@ public class LogsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logs_recycler);
-        _context = this;
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectAll()
+                .penaltyLog()
+                .penaltyDeathOnNetwork()
+                .penaltyFlashScreen()
+                .build());
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectAll()
+                .penaltyDeath()
+                .build());
         mbutton = findViewById(R.id.imageButton3);
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LogsListActivity.this, MainMenuActivity.class);
-                LogsListActivity.this.startActivity(intent);
+                logs.GotoMenu(LogsListActivity.this);
             }
         });
-        Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=Logs")
-                .build();
-        Log.i("info", "request built: Confirmed");
-        Call myCall = okHttpClient.newCall(request);
-        myCall.enqueue(new Callback() {
-
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                call.cancel();
+            public void run() {
+                LogsListAdapter adapter = new LogsListAdapter(LogsListActivity.this, logs.GetLogID(), logs.GetUser(), logs.GetDate());
+                Log.i("info", "adapter created: Confirmed");
+                rv.setAdapter(adapter);
             }
-
-            @Override
-            public void onResponse(Call call, final Response response) throws IOException {
-                Log.i("info", "request got response: response");
-                final String myResponse = response.body().string();
-                try {
-                    JSONArray jObj = new JSONArray(myResponse);
-                    for (int i = 0; i < jObj.length(); i++) {
-                        JSONObject obj = jObj.getJSONObject(i);
-                        String id_log = obj.getString("id_log");
-                        String fname = obj.getString("fname");
-                        String lname = obj.getString("lname");
-                        String date = obj.getString("date");
-                        Date.add(date);
-                        Username.add(fname+" "+lname);
-                        LogID.add(id_log);
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        };
         rv = findViewById(R.id.rv);
-        rv.setLayoutManager(new GridLayoutManager(_context, 1));
+        rv.setLayoutManager(new GridLayoutManager(this, 1));
         rv.setHasFixedSize(true);
-        LogsListAdapter adapter = new LogsListAdapter(_context,LogID,Username,Date);
-        try {
-            TimeUnit.MILLISECONDS.sleep(500);
-            Log.i("info", "adapter created: Confirmed");
-            rv.setAdapter(adapter);
+        logs.GetList();
+        handler.postDelayed(runnable, 500);
 
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
