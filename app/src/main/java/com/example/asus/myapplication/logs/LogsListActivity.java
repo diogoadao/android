@@ -18,18 +18,13 @@ import okhttp3.OkHttpClient;
 public class LogsListActivity extends AppCompatActivity {
     private final LogsListController logs = new LogsListController();
     private final StrictModeController control = new StrictModeController();
-    private ImageButton mbutton;
     private RecyclerView rv;
-    private OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .addNetworkInterceptor(new StethoInterceptor())
-            .build();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logs_recycler);
         control.turnStrict();
-        mbutton = findViewById(R.id.imageButton3);
+        ImageButton mbutton = findViewById(R.id.imageButton3);
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

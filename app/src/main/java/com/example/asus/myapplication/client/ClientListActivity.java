@@ -16,7 +16,6 @@ import com.example.asus.myapplication.utils.StrictModeController;
 
 public class ClientListActivity extends AppCompatActivity {
     private final StrictModeController control = new StrictModeController();
-    private ImageButton mbutton;
     private RecyclerView rv;
     private ClientListController client = new ClientListController();
     @Override
@@ -24,7 +23,7 @@ public class ClientListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.client_list_recycler);
         control.turnStrict();
-        mbutton = findViewById(R.id.imageButton3);
+        ImageButton mbutton = findViewById(R.id.imageButton3);
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

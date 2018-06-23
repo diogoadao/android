@@ -15,7 +15,6 @@ import com.example.asus.myapplication.utils.StrictModeController;
 
 public class CrmListActivity extends AppCompatActivity {
     private final StrictModeController control = new StrictModeController();
-    private ImageButton mbutton;
     private RecyclerView rv;
     private CrmListController crm = new CrmListController();
 
@@ -24,7 +23,7 @@ public class CrmListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logs_recycler);
         control.turnStrict();
-        mbutton = findViewById(R.id.imageButton3);
+        ImageButton mbutton = findViewById(R.id.imageButton3);
         mbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

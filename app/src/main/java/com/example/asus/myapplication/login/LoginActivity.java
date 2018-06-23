@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.example.asus.myapplication.R;
 import com.example.asus.myapplication.utils.StrictModeController;
@@ -34,19 +33,16 @@ public class LoginActivity extends AppCompatActivity {
     private OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
-    private Button loginbtn;
     private EditText mypass, myemail;
-    private boolean login_bool;
     private Context context;
     private ProgressDialog prog;
     private ConstraintLayout rellay1;
-    Runnable runnable = new Runnable() {
+    private Runnable runnable = new Runnable() {
         @Override
         public void run() {
             rellay1.setVisibility(View.VISIBLE);
         }
     };
-    private ImageView logo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         control.turnStrict();
         context = this;
-        loginbtn = findViewById(R.id.btn_login);
+        Button loginbtn = findViewById(R.id.btn_login);
         myemail = findViewById(R.id.myemail);
         mypass = findViewById(R.id.mypass);
         loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginController login = new LoginController();
                     JSONObject jObj = new JSONObject(myResponse);
                     data = jObj.toString();
-                    login_bool = login.LoginCheck(jObj, context);
+                    login.LoginCheck(jObj, context);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class UserListAdapter extends RecyclerView.Adapter<UserListViewHolder> {
     private Context context;
     private ArrayList<String> userid, email, completed, done, work, username, state;
-    private CardView card_view;
+
 
     public UserListAdapter(Context context, ArrayList<String> userid, ArrayList<String> email, ArrayList<String> completed, ArrayList<String> done, ArrayList<String> work, ArrayList<String> username, ArrayList<String> state) {
         this.context = context;

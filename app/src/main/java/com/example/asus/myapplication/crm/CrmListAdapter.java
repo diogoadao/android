@@ -16,7 +16,6 @@ public class CrmListAdapter extends RecyclerView.Adapter<CrmListViewHolder> {
     //CRM'S
     private Context _context;
     private ArrayList<String> IDCRM, exec, startdate, enddate, company, State;
-    private CardView card_view;
 
     public CrmListAdapter(Context _context, ArrayList<String> idcrm, ArrayList<String> exec, ArrayList<String> startdate, ArrayList<String> enddate, ArrayList<String> company, ArrayList<String> state) {
         this._context = _context;

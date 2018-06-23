@@ -14,7 +14,6 @@ public class ClientListAdapter extends RecyclerView.Adapter<ClientListViewHolder
 
     private Context context;
     private ArrayList<String> IDComp, CompName, Address;
-     CardView card_view;
 
     public ClientListAdapter(Context _context, ArrayList<String> IDComp, ArrayList<String> CompName, ArrayList<String> Address) {
         this.context = _context;
