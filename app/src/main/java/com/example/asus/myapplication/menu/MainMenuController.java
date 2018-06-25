@@ -94,7 +94,7 @@ public class MainMenuController {
                     yvalues.add(new Entry(Integer.parseInt(jObj.getString("open")), 1));
                     yvalues.add(new Entry(Integer.parseInt(jObj.getString("executed")), 2));
                     yvalues.add(new Entry(Integer.parseInt(jObj.getString("done")), 3));
-                    PieDataSet dataSet = new PieDataSet(yvalues, "Election Results");
+                    PieDataSet dataSet = new PieDataSet(yvalues, "Results");
 
                     ArrayList<String> xVals = new ArrayList<String>();
 

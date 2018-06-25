@@ -1,5 +1,6 @@
 package com.example.asus.myapplication.crm;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.client.ClientListActivity;
 import com.example.asus.myapplication.utils.StrictModeController;
 
 
@@ -30,6 +32,7 @@ public class CrmListActivity extends AppCompatActivity {
                 crm.gotoMenu(CrmListActivity.this);
             }
         });
+        final ProgressDialog prog = new ProgressDialog(this);
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
@@ -37,12 +40,19 @@ public class CrmListActivity extends AppCompatActivity {
                 CrmListAdapter adapter = new CrmListAdapter(CrmListActivity.this, crm.getID(), crm.getexec(), crm.getStartdate(), crm.getEnddate(), crm.getCompany(), crm.getState());
                 Log.i("info", "adapter created: Confirmed");
                 rv.setAdapter(adapter);
+                prog.dismiss();
             }
         };
-        crm.GetList();
+        prog.setTitle(getString(R.string.pleaseWait));
+        prog.setMessage(getString(R.string.loading));
+        prog.setCancelable(false);
+        prog.setIndeterminate(true);
+        prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        prog.show();
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new GridLayoutManager(this, 1));
         rv.setHasFixedSize(true);
-        handler.postDelayed(runnable, 500);
+        crm.GetList(handler,runnable);
+        //handler.postDelayed(runnable, 500);
     }
 }

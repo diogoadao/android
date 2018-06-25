@@ -2,6 +2,7 @@ package com.example.asus.myapplication.user;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 
 import com.example.asus.myapplication.menu.MainMenuActivity;
@@ -33,7 +34,7 @@ public class UserListController {
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
 
-    public boolean GetList() {
+    public boolean GetList(final Handler handler , final Runnable runnable) {
         Request request = new Request.Builder()
                 .url("http://thmc.ddns.net:81/android/api/api.php?action=Users")
                 .build();
@@ -70,6 +71,7 @@ public class UserListController {
                         Completed.add(completed);
                         //Log.d("info", "onResponse:"+state);
                     }
+                    handler.postDelayed(runnable, 500);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

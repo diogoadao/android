@@ -20,7 +20,6 @@ public class LoginActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private EditText mypass, myemail;
     private Context context;
-    private ProgressDialog prog;
     private ConstraintLayout rellay1;
     private Runnable runnable = new Runnable() {
         @Override
@@ -42,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prog = new ProgressDialog(LoginActivity.this);
+                ProgressDialog prog = new ProgressDialog(LoginActivity.this);
                 prog.setTitle(getString(R.string.pleaseWait));
                 prog.setMessage(getString(R.string.webpage_being_loaded));
                 prog.setCancelable(false);

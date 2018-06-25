@@ -1,5 +1,6 @@
 package com.example.asus.myapplication.user;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class UserListActivity extends AppCompatActivity {
         ImageButton mbutton = findViewById(R.id.imageButton3);
         control.turnStrict();
         Log.i("info", "onCreate: imagebutton");
+        final ProgressDialog prog = new ProgressDialog(this);
+
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
@@ -33,6 +36,8 @@ public class UserListActivity extends AppCompatActivity {
                 UserListAdapter adapter = new UserListAdapter(UserListActivity.this, data.getUserID(), data.getUserEmail(), data.getUserCompleted(), data.getUserDone(), data.getUserWork(), data.getUser(), data.getUserState());
                 Log.i("info", "adapter created: Confirmed");
                 rv.setAdapter(adapter);
+                prog.dismiss();
+
             }
         };
         mbutton.setOnClickListener(new View.OnClickListener() {
@@ -41,12 +46,18 @@ public class UserListActivity extends AppCompatActivity {
                 data.gotoMenu(UserListActivity.this);
             }
         });
+        prog.setTitle(getString(R.string.pleaseWait));
+        prog.setMessage(getString(R.string.loading));
+        prog.setCancelable(false);
+        prog.setIndeterminate(true);
+        prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        prog.show();
         rv = findViewById(R.id.rv);
-
-        data.GetList();
         rv.setLayoutManager(new GridLayoutManager(this, 1));
         rv.setHasFixedSize(true);
-        handler.postDelayed(runnable, 500);
+        data.GetList(handler, runnable);
+
+        //handler.postDelayed(runnable, 500);
 
     }
 

@@ -1,5 +1,6 @@
 package com.example.asus.myapplication.client;
 
+import android.os.Handler;
 import android.util.Log;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
@@ -25,7 +26,7 @@ public class ClientListController {
             .addNetworkInterceptor(new StethoInterceptor())
             .build();
 
-    public void getList() {
+    public void getList(final Handler handler,final Runnable runnable) {
 
         Request request = new Request.Builder()
                 .url("http://thmc.ddns.net:81/android/api/api.php?action=Clients")
@@ -54,6 +55,7 @@ public class ClientListController {
                         ClientName.add(name);
                         IdClient.add(id);
                     }
+                    handler.postDelayed(runnable, 0);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -60,7 +60,7 @@ public class LoginController {
                 final String myResponse = response.body().string();
                 try {
                     prog.dismiss();
-                    LoginController login = new LoginController();
+
                     JSONObject jObj = new JSONObject(myResponse);
                     loginCheck(jObj, context);
                 } catch (JSONException e) {

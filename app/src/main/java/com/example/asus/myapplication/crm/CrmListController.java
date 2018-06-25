@@ -2,6 +2,7 @@ package com.example.asus.myapplication.crm;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 
 import com.example.asus.myapplication.menu.MainMenuActivity;
@@ -32,7 +33,7 @@ public class CrmListController {
             .build();
 
 
-    public void GetList() {
+    public void GetList(final Handler handler, final Runnable runnable) {
 
         Request request = new Request.Builder()
                 .url("http://thmc.ddns.net:81/android/api/api.php?action=crm")
@@ -68,6 +69,7 @@ public class CrmListController {
                         Company.add(name);
                         State.add(state);
                     }
+                    handler.postDelayed(runnable, 0);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

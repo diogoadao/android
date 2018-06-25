@@ -1,5 +1,6 @@
 package com.example.asus.myapplication.logs;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.example.asus.myapplication.R;
+import com.example.asus.myapplication.client.ClientListActivity;
 import com.example.asus.myapplication.utils.StrictModeController;
 
 public class LogsListActivity extends AppCompatActivity {
@@ -29,6 +31,7 @@ public class LogsListActivity extends AppCompatActivity {
                 logs.gotoMenu(LogsListActivity.this);
             }
         });
+        final ProgressDialog prog = new ProgressDialog(this);
         Handler handler = new Handler();
         Runnable runnable = new Runnable() {
             @Override
@@ -36,13 +39,20 @@ public class LogsListActivity extends AppCompatActivity {
                 LogsListAdapter adapter = new LogsListAdapter(LogsListActivity.this, logs.getLogID(), logs.getUser(), logs.getDate());
                 Log.i("info", "adapter created: Confirmed");
                 rv.setAdapter(adapter);
+                prog.dismiss();
             }
         };
+        prog.setTitle(getString(R.string.pleaseWait));
+        prog.setMessage(getString(R.string.loading));
+        prog.setCancelable(false);
+        prog.setIndeterminate(true);
+        prog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        prog.show();
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new GridLayoutManager(this, 1));
         rv.setHasFixedSize(true);
-        logs.GetList();
-        handler.postDelayed(runnable, 500);
+        logs.GetList(handler,runnable);
+        //handler.postDelayed(runnable, 500);
 
     }
 }

@@ -40,5 +40,6 @@
     <string name="crm_list">Lista De Eventos</string>
     <string name="baseurl">http://thmc.ddns.net:81</string>
     <string name="searchbutton">search</string>
+    <string name="loading">A Carregar Dados</string>
 
 </resources>
