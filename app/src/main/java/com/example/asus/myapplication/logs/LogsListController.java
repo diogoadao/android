@@ -32,7 +32,7 @@ public class LogsListController {
 
     public void GetList(final Handler handler, final Runnable runnable) {
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=Logs")
+                .url("http://visualthinking.ddns.net:81/android/api/api.php?action=Logs")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);

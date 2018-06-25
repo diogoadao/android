@@ -72,7 +72,7 @@ public class MainMenuController {
 
     public void DoChart(final PieChart pieChart) {
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=PieChart")
+                .url("http://visualthinking.ddns.net:81/android/api/api.php?action=PieChart")
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {

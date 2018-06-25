@@ -29,7 +29,7 @@ public class ClientListController {
     public void getList(final Handler handler,final Runnable runnable) {
 
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=Clients")
+                .url("http://visualthinking.ddns.net:81/android/api/api.php?action=Clients")
                 .build();
         Log.i("info", "request built: Confirmed");
         Call myCall = okHttpClient.newCall(request);

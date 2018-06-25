@@ -44,7 +44,7 @@ public class LoginController {
     public void doSimpleGet(String Email, String Pass, final ProgressDialog prog,final Context context) {
 
         Request request = new Request.Builder()
-                .url("http://thmc.ddns.net:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
+                .url("http://visualthinking.ddns.net:81/android/api/api.php?action=login&user=" + Email + "&pass=" + Pass)
                 .build();
         Call myCall = okHttpClient.newCall(request);
         myCall.enqueue(new Callback() {
